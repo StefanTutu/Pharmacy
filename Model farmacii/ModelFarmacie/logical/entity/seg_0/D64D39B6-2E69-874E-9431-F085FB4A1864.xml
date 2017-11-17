@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D64D39B6-2E69-874E-9431-F085FB4A1864" name="IstoricTVA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:44:50 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdStoric" id="D9DFCADB-8A97-A583-0F0F-A7C4C197A74C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:44:57 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataIntrare" id="43D293F5-E3AE-8294-E098-074664D42123">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:45:20 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataIesire" id="275B9CB1-4FEF-1760-383F-875F92EE0DED">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:45:34 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Procent TVA" id="8A65F297-3015-4CE6-6146-C43A3E40C221">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:45:42 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2B74AB79-73CF-1BB4-6BF6-58EC17DB2D7E" name="IstoricTVA PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:45:19 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D9DFCADB-8A97-A583-0F0F-A7C4C197A74C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

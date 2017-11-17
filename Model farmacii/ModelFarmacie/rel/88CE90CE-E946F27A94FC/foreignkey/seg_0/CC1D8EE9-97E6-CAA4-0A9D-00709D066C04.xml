@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="CC1D8EE9-97E6-CAA4-0A9D-00709D066C04" containerWithKeyObject="1AA3489A-4DFB-30F8-F34E-5F2C572AFC28" localFKIndex="71F522DD-4186-CAB2-6CAB-CB53F2BCCB28" name="BONFISCAL_ModificareTVA_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>C5CECFA7-FCC3-DD71-3384-4F284F759485</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9CAA7F10-BD3B-0BB8-8450-A62E57A82642</referredTableID>
+<keyObject>8EF21109-DFB5-31CA-D264-674CD9224BEA</keyObject>
+<referredKeyID>8EF21109-DFB5-31CA-D264-674CD9224BEA</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

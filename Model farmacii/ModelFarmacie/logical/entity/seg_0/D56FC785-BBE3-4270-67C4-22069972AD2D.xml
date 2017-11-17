@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D56FC785-BBE3-4270-67C4-22069972AD2D" name="AdaosComercial">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:57:43 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="idAdaos" id="464C3674-E922-4159-6B37-D1D75BBAD506">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:57:51 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TipAdaos" id="D43F7E24-7CA6-71AD-DC23-2EEB98AD45B8">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:58:19 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ProcentAdaos" id="46139D64-2195-B3C5-2A6F-F44FDB321E0D">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:58:46 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>100</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,100,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

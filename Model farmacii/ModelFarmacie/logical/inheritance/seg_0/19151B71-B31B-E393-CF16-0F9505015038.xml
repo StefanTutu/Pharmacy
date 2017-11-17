@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.InheritanceRelation" name="Hierarchy_3" directorySegmentName="seg_0" id="19151B71-B31B-E393-CF16-0F9505015038">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:24:04 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Super Type</nameOnSource>
+<nameOnTarget>Sub Type</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceEntity>59A32897-B722-35B1-0E61-B99DDFF8B1BC</sourceEntity>
+<targetEntity>361A8450-FCB7-28E5-6C90-F0C10F4D1AD6</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

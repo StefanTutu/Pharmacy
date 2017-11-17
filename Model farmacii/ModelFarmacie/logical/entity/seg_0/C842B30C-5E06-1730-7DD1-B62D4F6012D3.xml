@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C842B30C-5E06-1730-7DD1-B62D4F6012D3" name="PartenerPersoana">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:13:45 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdPartener" id="41C08501-992D-973B-4F0B-983C740A3667">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:15:12 UTC</createdTime>
+<generatorID>13E7D038-5EED-7B72-94AC-6E22783F7E49</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>426AC40A-8864-4F65-3407-C3A6F77AAF8E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPersoana" id="1D1B68A3-3BE0-48CF-67A9-A6312F691F1A">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 16:00:35 UTC</createdTime>
+<generatorID>30CBB624-41E9-C5CC-3B60-F19A01AAAADA</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>F99F336D-161F-0439-B3A7-29DF962058B5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="667F50E8-242A-8FFD-6204-D4DD4A2C5897" name="PartenerPersoana PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:15:12 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>41C08501-992D-973B-4F0B-983C740A3667</attributeRef>
+<attributeRef>1D1B68A3-3BE0-48CF-67A9-A6312F691F1A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

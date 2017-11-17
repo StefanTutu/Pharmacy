@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D0A0FF51-C16B-D41F-ABE2-C12C350D4415" name="MEDIC">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>41331B54-C657-BA4A-496D-D716032F45C7</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDMedic" id="287E1507-94C0-1BD8-361A-C7E2015368F7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D636C6DF-CD49-F54A-E34C-F5BA131920BA</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumeMedic" id="10581B04-5030-F9F7-2F00-CC20724DC0E0">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>2D01F99C-DCA2-EE60-DFE8-49BAA922C5FF</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PrenumeMeic" id="6F68491E-2EC1-6DA1-3004-AF7B344881EF">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>EF4BA21D-E2A7-9116-8A4C-44316BF8FBBD</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SpecializareMedic" id="5B5914FF-9FDC-C993-4A48-6D9E34B967E7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>42D58309-0C5D-B90E-415A-186CDDFBA8AF</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Telefon" id="EB65095F-5D7B-7858-27A6-8E19C5017667">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>157ED6AD-4432-C952-38FC-07DD34366DDD</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Email" id="19144FEF-A755-2B0A-8A0C-55E9766D5784">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>8654BDED-D26C-635C-4970-C45031471093</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CABINET_IDCabinet" id="D3DF03FE-D8CE-B746-7A32-2F908C8163E1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>B9788AB4-9EA9-9395-F155-E2EE33323F6C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="387C44A1-3F03-B928-1277-35816E787012" referredColumn="E1B29188-FF0A-5141-72B6-D0C0C9C9BF9C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="706F4B7D-F483-6D24-3247-9F53E8C997A7" name="MEDIC_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>CEF2B0DD-780A-29A4-5DD8-A3CA4D35109A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="287E1507-94C0-1BD8-361A-C7E2015368F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="375C2E90-1F3A-760E-9B5F-CD6738A31A6E" name="MEDIC_CABINET_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>A1985752-B681-2DD3-129F-CF00B65E2C4C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D3DF03FE-D8CE-B746-7A32-2F908C8163E1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

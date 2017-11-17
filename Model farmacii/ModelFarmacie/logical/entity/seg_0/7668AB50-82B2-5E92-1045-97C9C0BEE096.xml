@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7668AB50-82B2-5E92-1045-97C9C0BEE096" name="ParteneriAgajati">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:07:47 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDAngajat" id="2E0AC84F-D737-580E-7BC3-5AF29DB47CAA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:11:18 UTC</createdTime>
+<generatorID>8DA07D83-5910-810E-D4B4-A58ADB50415F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>571E5667-69E8-4959-188B-9D9A7386C648</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPreparareMedicament" id="03AC8037-620B-2D33-0911-8BA5D3404A9F">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:11:18 UTC</createdTime>
+<generatorID>8DA07D83-5910-810E-D4B4-A58ADB50415F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>43F8105A-A6EA-7029-FE06-720277BCCDD7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdAngajat1" id="7CB912BD-89FC-5F02-8F07-F5185E593BCB">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:11:18 UTC</createdTime>
+<generatorID>8DA07D83-5910-810E-D4B4-A58ADB50415F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>1CB40DEC-8633-0CF7-C9AB-771F574A487B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPartener" id="E83A0C15-32CF-5E6D-A0F3-96431490CEEB">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:11:30 UTC</createdTime>
+<generatorID>787FED79-4753-4FD2-2675-E9DD895E8D62</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>426AC40A-8864-4F65-3407-C3A6F77AAF8E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F7F43FF8-6C5B-A04A-9B27-82B88E6FBFFB" name="ParteneriAgajati PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:11:18 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2E0AC84F-D737-580E-7BC3-5AF29DB47CAA</attributeRef>
+<attributeRef>03AC8037-620B-2D33-0911-8BA5D3404A9F</attributeRef>
+<attributeRef>7CB912BD-89FC-5F02-8F07-F5185E593BCB</attributeRef>
+<attributeRef>E83A0C15-32CF-5E6D-A0F3-96431490CEEB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

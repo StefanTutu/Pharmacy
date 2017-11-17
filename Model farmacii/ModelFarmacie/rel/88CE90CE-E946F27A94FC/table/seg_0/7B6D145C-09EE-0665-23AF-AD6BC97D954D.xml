@@ -1,0 +1,151 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7B6D145C-09EE-0665-23AF-AD6BC97D954D" name="CLIENT">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>361A8450-FCB7-28E5-6C90-F0C10F4D1AD6</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersoana" id="A273133E-291A-56C1-7724-FC16FD64EFD6">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>F99F336D-161F-0439-B3A7-29DF962058B5</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="14EBCE8D-5868-D37A-65C4-081514F040E3" referredColumn="E161DF81-3E10-3BB3-86C0-31671AED3B9B"/>
+</associations>
+</Column>
+<Column name="TipClient" id="F93FFE50-3FCE-4E38-9AD1-2A7DCA265F3B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>60E5A34D-926E-6571-B0E6-A63F4507D62C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Telefon" id="60873F3B-2ACB-28B9-EE6B-2A593505A442">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>48E8F320-6AA6-70F3-C40B-A62E308542F3</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Email" id="69AC9B9E-5AE7-EF66-6A72-9E5131F2DC63">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>B275AD36-2BA8-A3A6-2DDA-028CA5DC5AC1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IdClient" id="48C2E8DD-E04F-F9B9-65DF-336A2189DF0E">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>C091E169-AB82-583E-8FCA-718B178CCD08</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BONFISCAL_IDBonFiscal" id="61950BBA-F420-14AE-A770-06BCFA772DBE">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>F6997CFE-7FD7-44E2-7D32-4A2C59DD783C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1CFAF3AE-CA81-0431-58C0-6D3DEC873736" referredColumn="C657C30E-6A56-21F4-C9F1-245BBA5E69A9"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7E5AAD7C-8C22-C07C-3935-137738C8DD39" name="CLIENT_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>E833866F-3E47-577E-EF72-B5EBD3AE6649</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A273133E-291A-56C1-7724-FC16FD64EFD6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="41BBA005-9916-8E30-F5C3-05FFDC76F5C6" name="CLIENT_PKv1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>8D79ACC3-AD45-73D5-B501-690E55A5F11B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="48C2E8DD-E04F-F9B9-65DF-336A2189DF0E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9DF82C1E-9C55-96BA-9C44-DC60376CFC9A" name="CLIENT__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>0644031F-C78B-BC2A-E90B-7351FF1C6D4F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="61950BBA-F420-14AE-A770-06BCFA772DBE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="92568133-1E91-C6E2-7F40-8A0E8EF2E84C" name="CLIENT_Persoane_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>19151B71-B31B-E393-CF16-0F9505015038</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A273133E-291A-56C1-7724-FC16FD64EFD6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5CA603CB-A53A-34BA-47D8-D3DB374B5908" name="CLIENT_BONFISCAL_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>0644031F-C78B-BC2A-E90B-7351FF1C6D4F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="61950BBA-F420-14AE-A770-06BCFA772DBE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

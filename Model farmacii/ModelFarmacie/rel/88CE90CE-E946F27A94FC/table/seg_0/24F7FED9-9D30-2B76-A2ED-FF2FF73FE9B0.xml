@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="24F7FED9-9D30-2B76-A2ED-FF2FF73FE9B0" name="Cantitate">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>09507E24-B43D-20CB-15FD-2E6E5C171997</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SUBSTANTACHIMICA_IdSubstanta" id="DF595923-BB49-093D-1FAC-A19A2CA55E51">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>3791A0F9-F109-8238-73CC-7EB97A1C80DE</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8465F7CF-6EC4-59A4-3452-BEA2EC6D5121" referredColumn="E8DB6A3D-B1A3-72DD-6272-68F97DBF93FA"/>
+</associations>
+</Column>
+<Column name="MedicamentPatentat_IdPreparareMedicament" id="036F584F-3406-CDCF-310D-F060899BFA8D">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>9D140F9C-094C-1152-459B-46E0EBB5614A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A16EBAF0-8574-C72D-A705-C1D5C9A101F1" referredColumn="769CC4E8-9E82-8539-D0F4-B7C6435ACA68"/>
+</associations>
+</Column>
+<Column name="MedicamentPatentat_ResponsabilPreparare_IdPreparareMedicament" id="85A40024-211E-AC71-A8C1-4FA12DAF2F36">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>A7C35A5D-4ED3-E7B7-7B4C-F1D816095AE8</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A16EBAF0-8574-C72D-A705-C1D5C9A101F1" referredColumn="B4B1E91E-0867-1A70-4C03-5B9BFF45328F"/>
+</associations>
+</Column>
+<Column name="MedicamentPatentat_ResponsabilPreparare_IdAngajat" id="3765C7A8-0D03-B73F-EF71-C2F094E5FD87">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>92FB4152-D024-7F8C-3AB5-0C26F6C0D1A6</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A16EBAF0-8574-C72D-A705-C1D5C9A101F1" referredColumn="C6B6DAD5-C71E-AA4C-6792-A0815D6ACB74"/>
+</associations>
+</Column>
+<Column name="Cantitate" id="6C089C7A-AB3F-A3B0-6EBC-D0E402E10C08">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>FFA3524B-87B2-36D1-2A7E-5BADFA8223B4</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="91E47267-633C-C7D7-43A5-264BC5A77727" name="Cantitate_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>1D783460-C3C2-9B3B-0E1E-186F3C49FAFD</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF595923-BB49-093D-1FAC-A19A2CA55E51"/>
+<colUsage columnID="036F584F-3406-CDCF-310D-F060899BFA8D"/>
+<colUsage columnID="85A40024-211E-AC71-A8C1-4FA12DAF2F36"/>
+<colUsage columnID="3765C7A8-0D03-B73F-EF71-C2F094E5FD87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8C5AE735-C97A-BA4C-BF20-CB9A62AC52FD" name="Cantitate_SUBSTANTACHIMICA_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>1720DA93-BCF9-2872-A622-957A3B78FF2A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF595923-BB49-093D-1FAC-A19A2CA55E51"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="99C4C52A-7A14-3088-65D7-BC7C4F1BFD4C" name="Cantitate_MedicamentPatentat_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>55817871-07B2-0B29-8010-996593ACDD1C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="036F584F-3406-CDCF-310D-F060899BFA8D"/>
+<colUsage columnID="85A40024-211E-AC71-A8C1-4FA12DAF2F36"/>
+<colUsage columnID="3765C7A8-0D03-B73F-EF71-C2F094E5FD87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

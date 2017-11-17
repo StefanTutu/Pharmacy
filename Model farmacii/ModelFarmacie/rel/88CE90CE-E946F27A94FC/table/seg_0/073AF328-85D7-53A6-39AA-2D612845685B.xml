@@ -1,0 +1,206 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="073AF328-85D7-53A6-39AA-2D612845685B" name="ListaMedicamenteBoli">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>90100315-4071-22C6-9F5E-30709827B52E</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Boli_IdBoala" id="C873D22C-ABF7-CFDD-2EF5-E71E3077FD0C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>C19EB3A6-A0D6-4578-0F4C-2DD98F171EC0</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="52F141CF-DF2A-6591-5C3A-08403858AB0A" referredColumn="DC862EB9-BED3-49AB-019F-0FBCEBDB9124"/>
+</associations>
+</Column>
+<Column name="Medicament_IDMedicament" id="B734651A-389E-F1B9-3780-20CC48B1A65B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>A67D84BE-3769-91BB-A970-9BC346198119</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B56E0834-804A-7BF0-DD30-82A5C9BC9F52" referredColumn="06F94160-C4E7-2143-4002-7B9EEC2EAEAC"/>
+</associations>
+</Column>
+<Column name="Medicament_Prescriptie_IdPrescriptie" id="E7BD3493-7AB7-7547-5C90-E119C51D4CB2">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>0A7CDCEF-C3D6-8030-16B2-5A4EA64FD159</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Medicament_Prescriptie_RETETA_IDreteta" id="58E45652-0C51-8160-AB7E-03A401A77452">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>D9013646-75F7-7DDA-C035-77E4D68BF817</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Medicament_Prescriptie_RETETA_MEDIC_IDMedic" id="636ECF15-608F-69BD-388B-12C877CA2325">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>3090F016-1050-1333-E679-17669A73B118</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Medicament_LOTMEDICAMENT_IdLot" id="250166FC-5805-4C8D-FF6D-7CF8EE9755E2">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>BD4B80D3-94FB-3A65-B3A0-71F81A103A14</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B56E0834-804A-7BF0-DD30-82A5C9BC9F52" referredColumn="2FEF0A72-7110-A09E-C300-57C178EDF3F3"/>
+</associations>
+</Column>
+<Column name="Medicament_StocFarmacie_IdStoc" id="5FEE18FF-A582-1243-7E5E-DAD34A50C655">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>8CE99390-C7AD-8D11-5D03-0F66C6CE95FD</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B56E0834-804A-7BF0-DD30-82A5C9BC9F52" referredColumn="BAF5876C-2E6A-C13D-B04E-19127FD8EA90"/>
+</associations>
+</Column>
+<Column name="Medicament_StocFarmacie_ProducatoriProdus_IdStoc" id="655E4B8D-A792-504E-4F50-3534D8321383">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>737C8860-93F5-754B-E80D-19BB981EB214</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B56E0834-804A-7BF0-DD30-82A5C9BC9F52" referredColumn="FEFF69CE-3836-DA2C-E3BB-224E26C921F4"/>
+</associations>
+</Column>
+<Column name="Medicament_StocFarmacie_ProducatoriProdus_IdProducator" id="3D6AC159-3557-B865-1391-397FD0994CFB">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>F9238EE2-7512-3028-E42B-F6F8E1FF339B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B56E0834-804A-7BF0-DD30-82A5C9BC9F52" referredColumn="F673CD5F-5250-FBE9-2E1A-32229A0E766D"/>
+</associations>
+</Column>
+<Column name="Boli_GrupDeBoli_IdGrupBoli" id="5211D696-17B8-6379-4A1C-8FCA5D226B10">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>CB352CC5-749A-B6E9-3DCA-8354B8D5EA43</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="52F141CF-DF2A-6591-5C3A-08403858AB0A" referredColumn="FEA0A0B7-2894-9D9D-CBC3-12FB90513A41"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2AB33D03-427C-C0D1-2A75-FC6AE8C81D1B" name="ListaMedicamenteBoli_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>BD70E98A-FECB-3747-8154-D4B4FDD5004D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C873D22C-ABF7-CFDD-2EF5-E71E3077FD0C"/>
+<colUsage columnID="5211D696-17B8-6379-4A1C-8FCA5D226B10"/>
+<colUsage columnID="B734651A-389E-F1B9-3780-20CC48B1A65B"/>
+<colUsage columnID="250166FC-5805-4C8D-FF6D-7CF8EE9755E2"/>
+<colUsage columnID="5FEE18FF-A582-1243-7E5E-DAD34A50C655"/>
+<colUsage columnID="655E4B8D-A792-504E-4F50-3534D8321383"/>
+<colUsage columnID="3D6AC159-3557-B865-1391-397FD0994CFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="85216960-B578-5AB3-CFF5-52F5EC45F9CC" name="ListaMedicamenteBoli_Boli_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>6FC12758-3CC4-6702-6C11-504B8E5A54E1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C873D22C-ABF7-CFDD-2EF5-E71E3077FD0C"/>
+<colUsage columnID="5211D696-17B8-6379-4A1C-8FCA5D226B10"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FA912EAA-3975-6C36-AB41-335C15A5273A" name="ListaMedicamenteBoli_Medicament_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>A096FF67-90CC-80ED-EFE2-7E3640E6188B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B734651A-389E-F1B9-3780-20CC48B1A65B"/>
+<colUsage columnID="250166FC-5805-4C8D-FF6D-7CF8EE9755E2"/>
+<colUsage columnID="5FEE18FF-A582-1243-7E5E-DAD34A50C655"/>
+<colUsage columnID="655E4B8D-A792-504E-4F50-3534D8321383"/>
+<colUsage columnID="3D6AC159-3557-B865-1391-397FD0994CFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

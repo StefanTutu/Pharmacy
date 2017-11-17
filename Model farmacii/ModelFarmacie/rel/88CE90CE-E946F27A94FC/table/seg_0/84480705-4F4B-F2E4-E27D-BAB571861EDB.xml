@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="84480705-4F4B-F2E4-E27D-BAB571861EDB" name="TipIncasare">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D0C60EE6-F279-438C-CAAC-F701C0EB001F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdTipIncasare" id="0B8D9581-E341-AFFD-504B-671BFDB54BEA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>1845083A-35EA-C770-5EAA-8D830629C1A4</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DenumireTipIncasare" id="FA4C1D16-54FB-FF7C-9F4C-27166F2D8B44">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>BCECCB39-47F0-4C7E-2877-835573E69D50</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DocumentIncasare_IdDocIncasare" id="C8CA660E-7C64-6ECB-8AFC-BA7B4DB59CBD">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>950B1713-DE48-84CA-17B5-823FAC5E0E2B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BE79E6A9-D73C-61F6-21AF-FDE836A86804" referredColumn="08AEF3FD-E626-72B7-0C69-4C0D7977F48E"/>
+</associations>
+</Column>
+<Column name="DocumentIncasare_IdDocIncasare1" id="D41DF0D2-06F0-C49C-E57C-8753E7FD0151">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>E507D1AA-67F3-9521-D68B-B7B806B50DB8</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E46A583D-9E89-189C-0342-764957502C2F" referredColumn="08AEF3FD-E626-72B7-0C69-4C0D7977F48E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E4F386D1-6F0B-B090-D3D6-15399EB24A28" name="TipIncasare_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>AB84077B-8F5B-515A-3ED1-1B2C28D843CB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B8D9581-E341-AFFD-504B-671BFDB54BEA"/>
+<colUsage columnID="D41DF0D2-06F0-C49C-E57C-8753E7FD0151"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="621A7B46-9CBC-AFF9-A350-1AEC8EE77C71" name="TipIncasare__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>3DB3456F-DC17-9481-76EB-04CF6C27CAD3</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C8CA660E-7C64-6ECB-8AFC-BA7B4DB59CBD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3029AB1B-0C9F-7D41-6754-26031D34FF13" name="TipIncasare_DocumentIncasare_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>3DB3456F-DC17-9481-76EB-04CF6C27CAD3</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8CA660E-7C64-6ECB-8AFC-BA7B4DB59CBD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9F8DDB95-5B09-1862-1FBC-839FEE70D7C1" name="TipIncasare_DocumentIncasare_FKv1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>436EC353-1F0F-62D6-50A1-574C9BC232AF</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D41DF0D2-06F0-C49C-E57C-8753E7FD0151"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BE79E6A9-D73C-61F6-21AF-FDE836A86804" containerWithKeyObject="84480705-4F4B-F2E4-E27D-BAB571861EDB" localFKIndex="3029AB1B-0C9F-7D41-6754-26031D34FF13" name="TipIncasare_DocumentIncasare_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>3DB3456F-DC17-9481-76EB-04CF6C27CAD3</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9F18CC1A-00B7-D03C-C98C-8B3FC2E575EE</referredTableID>
+<keyObject>6D736F85-F82C-47DD-2986-0D8E87F7B1C1</keyObject>
+<referredKeyID>6D736F85-F82C-47DD-2986-0D8E87F7B1C1</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

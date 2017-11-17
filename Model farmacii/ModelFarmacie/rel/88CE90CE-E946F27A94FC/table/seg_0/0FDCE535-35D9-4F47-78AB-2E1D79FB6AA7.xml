@@ -1,0 +1,145 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0FDCE535-35D9-4F47-78AB-2E1D79FB6AA7" name="ModificarePrescpritie">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>08D809FD-0F02-BF9C-4144-5CC48B1ECB5E</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdModificarePrescriptie" id="4B329E3F-D9C9-33A2-1844-53A8558FF5A0">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D094AD33-8CD7-508B-F636-AC7B7332E722</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataEliberarii" id="6BE8C71E-1467-A2D3-D972-5449147290ED">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>896528A2-AF91-C63D-CD62-15FC2222C04C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataCompletarii" id="34CF57C7-A14D-E748-8821-C27FD40DBBBB">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>5BDAB44D-7FA9-6392-0972-017255A5E14F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CantitatePrescrisa" id="AA00D808-2B06-4F31-3987-0E0DC92BCF18">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>447D5B1A-927B-855C-CC44-0308E25914E8</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Prescriptie_IdPrescriptie" id="25CEFE5B-42AC-8AE4-AF5C-831030041354">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>12D88472-3734-E90B-E36A-14D0E4CEC900</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AF06FC4C-5DD8-47DB-322D-E0F32525AB3F" referredColumn="BFA9A6F7-9701-F118-131E-EDA199461D2A"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_IDreteta" id="6DBAB39E-FB07-8585-ACD9-4FF64DF20254">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>C6D6E255-E724-25A8-E7B7-2FA9D8B7E001</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AF06FC4C-5DD8-47DB-322D-E0F32525AB3F" referredColumn="FDD26C4C-7918-E8A9-2DBE-B9F4E70B86DF"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_MEDIC_IDMedic" id="438E40EF-39E0-B0B0-BE99-0DBCE553F902">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>7D804F48-E90C-E48F-DAA7-600E245AEFBC</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AF06FC4C-5DD8-47DB-322D-E0F32525AB3F" referredColumn="A97BFB6C-A90E-B032-B0F0-85B24A8C91C0"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_MEDIC_IDCabinet" id="A7515734-5827-BCFB-4A86-3DEB5A0256B8">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D85F5AAA-8855-6281-55EB-B79B809B02A9</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5EE07A18-5B8D-6139-7225-FC7DD8860027" name="ModificarePrescpritie_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>742DF2ED-E0A0-A1FD-3FC4-83392BC5B2C2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4B329E3F-D9C9-33A2-1844-53A8558FF5A0"/>
+<colUsage columnID="25CEFE5B-42AC-8AE4-AF5C-831030041354"/>
+<colUsage columnID="6DBAB39E-FB07-8585-ACD9-4FF64DF20254"/>
+<colUsage columnID="438E40EF-39E0-B0B0-BE99-0DBCE553F902"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3C4B3344-CE70-F9B4-9CAC-5BCBE811AD77" name="ModificarePrescpritie_Prescriptie_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>BA728D1A-108B-281B-BE13-3E25B848E6D2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="25CEFE5B-42AC-8AE4-AF5C-831030041354"/>
+<colUsage columnID="6DBAB39E-FB07-8585-ACD9-4FF64DF20254"/>
+<colUsage columnID="438E40EF-39E0-B0B0-BE99-0DBCE553F902"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

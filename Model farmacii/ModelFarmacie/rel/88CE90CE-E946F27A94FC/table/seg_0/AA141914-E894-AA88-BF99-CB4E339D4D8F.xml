@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AA141914-E894-AA88-BF99-CB4E339D4D8F" name="Delegati">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>6217699D-1C19-5E26-7917-680693CBAEE2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdDelegat" id="6CAE6BAB-282C-ED05-133C-336F8CA29722">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>028A56B2-4C5A-10E1-F200-4327ED886DBC</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumeDelegat" id="0C9A57C9-1C66-B643-CBF8-FB7F399C264B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>81C83AB0-01C4-F793-C3A4-FD7DCC9E114F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PrenumeDelegat" id="1B8DC853-8218-8A02-C3EC-67A8021BC68B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>F5FAB73A-43B2-C9DF-F9B1-7A8468C31FFE</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CNPDelegat" id="0B31FF89-E9D2-DE13-3588-5D6AC97E564F">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>DEE84EBF-3A96-9F41-3369-B754C7D79270</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SerieCI" id="D58CD23A-9E08-371F-668C-3C0B63808AE8">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>480B1E48-5138-93CB-AA72-CEC47C7FFCE7</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumarCI" id="3529D9F3-1CCE-212A-DA36-34494944957B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>43A97D1B-41F1-AD3C-37A6-EB19888498BB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6</dataTypeSize>
+<ownDataTypeParameters>6,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MijlocDeTransport" id="EFF2B2FD-EE01-AB79-4048-19270915C121">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>37956402-3F67-FD62-4EEC-6521E37F5909</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumarAutovehicol" id="A5C4046E-9698-8520-70AD-FF77A7BABFCB">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>816EDEE5-54DC-34DC-4E3B-4E2A259ADEF2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6AA1E9A3-398A-0606-820F-2EB778E2A21F" name="Delegati_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>623101EC-9647-6DF7-E4A7-370869FB99CB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6CAE6BAB-282C-ED05-133C-336F8CA29722"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

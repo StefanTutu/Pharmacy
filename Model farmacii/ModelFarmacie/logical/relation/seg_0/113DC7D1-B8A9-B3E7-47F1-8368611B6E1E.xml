@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MEDIC_RETETA" directorySegmentName="seg_0" id="113DC7D1-B8A9-B3E7-47F1-8368611B6E1E">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:21:51 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<sourcePk>CEF2B0DD-780A-29A4-5DD8-A3CA4D35109A</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>41331B54-C657-BA4A-496D-D716032F45C7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>5A7E340D-D9C4-D5A8-CD31-CC65F23C3D3D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

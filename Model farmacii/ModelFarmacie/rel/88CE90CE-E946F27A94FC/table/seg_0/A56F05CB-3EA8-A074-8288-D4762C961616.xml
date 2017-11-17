@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A56F05CB-3EA8-A074-8288-D4762C961616" name="ParteneriAgajati">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>7668AB50-82B2-5E92-1045-97C9C0BEE096</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ANGAJAT_IDAngajat" id="837FD863-13BF-2A4E-B8A9-F6DCA6E9596F">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>2E0AC84F-D737-580E-7BC3-5AF29DB47CAA</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F569F3BA-2883-72A2-C913-3709AA8BBA19" referredColumn="019C0CBD-AA66-715E-ACE4-1807E216CC4D"/>
+</associations>
+</Column>
+<Column name="ANGAJAT_ResponsabilPreparare_IdPreparareMedicament" id="1CC1ED8E-5D68-5E19-E20B-F3A59851DB8E">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>03AC8037-620B-2D33-0911-8BA5D3404A9F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F569F3BA-2883-72A2-C913-3709AA8BBA19" referredColumn="14FC58B7-E5DA-5874-E4F8-A1BBC4C60514"/>
+</associations>
+</Column>
+<Column name="ANGAJAT_ResponsabilPreparare_IdAngajat" id="80F66F55-BB30-F33D-67B8-6504F6DBF459">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>7CB912BD-89FC-5F02-8F07-F5185E593BCB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F569F3BA-2883-72A2-C913-3709AA8BBA19" referredColumn="48BF048E-4FD2-9F45-0361-24A710448E47"/>
+</associations>
+</Column>
+<Column name="Parteneri_IdPartener" id="87F14535-7B35-D8BF-C62F-7765449AFC44">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>E83A0C15-32CF-5E6D-A0F3-96431490CEEB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9EF37C9E-EA9A-D341-9BF9-106CD7EC2EFF" referredColumn="199858CD-987E-9F4E-193B-7C70EDF004F4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3346892F-0358-409E-7C3C-29DCFD09A44D" name="ParteneriAgajati_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>F7F43FF8-6C5B-A04A-9B27-82B88E6FBFFB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="837FD863-13BF-2A4E-B8A9-F6DCA6E9596F"/>
+<colUsage columnID="1CC1ED8E-5D68-5E19-E20B-F3A59851DB8E"/>
+<colUsage columnID="80F66F55-BB30-F33D-67B8-6504F6DBF459"/>
+<colUsage columnID="87F14535-7B35-D8BF-C62F-7765449AFC44"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3FA66426-B1C5-0CB1-DCD1-D5B8B961E7BA" name="ParteneriAgajati_ANGAJAT_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>8DA07D83-5910-810E-D4B4-A58ADB50415F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="837FD863-13BF-2A4E-B8A9-F6DCA6E9596F"/>
+<colUsage columnID="1CC1ED8E-5D68-5E19-E20B-F3A59851DB8E"/>
+<colUsage columnID="80F66F55-BB30-F33D-67B8-6504F6DBF459"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7A56E65B-1434-6A4E-261A-52FAB0229FEE" name="ParteneriAgajati_Parteneri_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>787FED79-4753-4FD2-2675-E9DD895E8D62</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87F14535-7B35-D8BF-C62F-7765449AFC44"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

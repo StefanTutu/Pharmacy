@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="09507E24-B43D-20CB-15FD-2E6E5C171997" name="Cantitate">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:17:45 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdSubstanta" id="3791A0F9-F109-8238-73CC-7EB97A1C80DE">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:18:29 UTC</createdTime>
+<generatorID>1720DA93-BCF9-2872-A622-957A3B78FF2A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>48DCF325-70AC-C9A9-8526-4C4698138325</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPreparareMedicament" id="9D140F9C-094C-1152-459B-46E0EBB5614A">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:18:44 UTC</createdTime>
+<generatorID>55817871-07B2-0B29-8010-996593ACDD1C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>7744F215-4ED3-4723-AA20-4E098FDFC3F5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPreparareMedicament1" id="A7C35A5D-4ED3-E7B7-7B4C-F1D816095AE8">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:18:44 UTC</createdTime>
+<generatorID>55817871-07B2-0B29-8010-996593ACDD1C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>9F708F43-17B1-605B-7D41-1EFEB2461C6A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdAngajat" id="92FB4152-D024-7F8C-3AB5-0C26F6C0D1A6">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:18:44 UTC</createdTime>
+<generatorID>55817871-07B2-0B29-8010-996593ACDD1C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>AFD3CE44-A971-9F68-D026-3D95CE1A38E4</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cantitate" id="FFA3524B-87B2-36D1-2A7E-5BADFA8223B4">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:19:00 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1D783460-C3C2-9B3B-0E1E-186F3C49FAFD" name="Cantitate PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:18:29 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3791A0F9-F109-8238-73CC-7EB97A1C80DE</attributeRef>
+<attributeRef>9D140F9C-094C-1152-459B-46E0EBB5614A</attributeRef>
+<attributeRef>A7C35A5D-4ED3-E7B7-7B4C-F1D816095AE8</attributeRef>
+<attributeRef>92FB4152-D024-7F8C-3AB5-0C26F6C0D1A6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

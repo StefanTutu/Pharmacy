@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5D5E3061-A8E2-EDC7-B31D-754F9E62069F" name="LINIERETETA">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:55:28 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="NumarLinie" id="CD04EE26-E1E1-893F-84F5-FFBEC40BF2A0">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:01:32 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>50</dataTypePrecision>
+<ownDataTypeParameters>,50,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDreteta1" id="AABE8317-929E-FDC9-9D6B-B108B935A2C1">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:56:12 UTC</createdTime>
+<generatorID>EE780396-C270-F6DE-8E5A-53A9CD553B3D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>9E3CCCAB-706E-98BA-50A1-E913BF1331EE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDMedic" id="CEE4E22D-C2A0-A77A-FC57-0098652E0546">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:56:12 UTC</createdTime>
+<generatorID>EE780396-C270-F6DE-8E5A-53A9CD553B3D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>7DC1B2A5-650F-936E-18A4-2940954080C3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cantitate" id="D0B2768F-520A-0D00-F3FE-E93BF64C8CFB">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:02:05 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>500</dataTypePrecision>
+<ownDataTypeParameters>,500,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PretPeUnitate" id="6F0357ED-D909-8C98-D072-732092CEB6F7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:04:13 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>100</dataTypePrecision>
+<ownDataTypeParameters>,100,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D1DBC057-F75E-9BF1-53B4-3AD91EB9FBD9" name="LINIERETETA PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 07:36:26 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>CD04EE26-E1E1-893F-84F5-FFBEC40BF2A0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

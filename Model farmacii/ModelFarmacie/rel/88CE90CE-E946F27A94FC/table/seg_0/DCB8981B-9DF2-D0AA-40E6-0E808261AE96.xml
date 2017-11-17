@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DCB8981B-9DF2-D0AA-40E6-0E808261AE96" name="CABINET">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>E75A2E54-1EEA-4DBD-B0D4-BE103E87966B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCabinet" id="E1B29188-FF0A-5141-72B6-D0C0C9C9BF9C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>83A6F61D-8C46-CF29-BD75-417DA6A03B09</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumeCabinet" id="C90506D0-09D6-2D41-DEF6-C6C537325EBA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>26432AB5-7931-A7A4-63FA-B9F462F31FF0</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TipCabinet" id="1CDAB86E-F955-4A2D-E9CD-DD3402FBB6CC">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>F5A85C40-D42B-DAEA-3F3B-87022ADA7464</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Adresa" id="016EE608-7B24-A96C-832D-58E82FBD69F8">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>378E5C0B-89A2-9B55-6E14-882036B0EB4E</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Telefon" id="5710EAA7-274A-3B25-6B5D-CDD3DB8E506B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>5669D03B-B525-A678-7091-DA29E4179DAF</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Email" id="9C02B83C-F07E-6345-9C07-3A0CDA58E0C1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>52E0C57A-2277-2CD9-EF07-90942B8F3C56</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="407B6E4C-11EB-AC75-6CFB-8F1CF4CFEE67" name="CABINET_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>F4977290-920B-69E2-42F4-98EAA87C8D89</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E1B29188-FF0A-5141-72B6-D0C0C9C9BF9C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

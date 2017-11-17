@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="93013634-7A84-ABB9-1D11-524B01351CDF" name="CabineteMedic">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:41:21 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDMedic" id="4462F737-41DE-44C9-E20D-3E2D39324926">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:41:48 UTC</createdTime>
+<generatorID>DBB88E64-D01A-D0B0-5EBD-5E02C48B91D4</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>D636C6DF-CD49-F54A-E34C-F5BA131920BA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDCabinet" id="CD7661E4-3433-CA6C-8040-EF70047EB754">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:41:54 UTC</createdTime>
+<generatorID>E8CB8A21-6BD6-7F49-0751-FCC1EF17F8A3</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>83A6F61D-8C46-CF29-BD75-417DA6A03B09</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="3CD55A8C-A6FC-DEA3-142E-FE5EA9EDBAC8" name="CabineteMedic PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:41:48 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4462F737-41DE-44C9-E20D-3E2D39324926</attributeRef>
+<attributeRef>CD7661E4-3433-CA6C-8040-EF70047EB754</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

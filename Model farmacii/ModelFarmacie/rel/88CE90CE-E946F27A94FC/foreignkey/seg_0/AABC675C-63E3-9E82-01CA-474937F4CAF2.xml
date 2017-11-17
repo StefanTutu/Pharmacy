@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AABC675C-63E3-9E82-01CA-474937F4CAF2" containerWithKeyObject="C5F70E40-AA79-B1B0-B50C-F2D394766019" localFKIndex="13C90B0B-4895-55B9-BFE6-E155B2EC52DC" name="Stocuri_LOTMEDICAMENT_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>F51A0581-D6A5-46F0-9449-8402F474BD4A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>DA6418B8-F7A3-DC95-3E18-9065D6C26E8A</referredTableID>
+<keyObject>9D5883C7-E865-C91E-8D7C-E8806C18BF3F</keyObject>
+<referredKeyID>9D5883C7-E865-C91E-8D7C-E8806C18BF3F</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

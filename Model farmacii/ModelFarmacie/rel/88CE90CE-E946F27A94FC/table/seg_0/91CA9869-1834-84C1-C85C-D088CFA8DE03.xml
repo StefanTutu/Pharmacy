@@ -1,0 +1,196 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="91CA9869-1834-84C1-C85C-D088CFA8DE03" name="Discount">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>A88B4D32-A7FB-E59A-7ECC-9E93DE46417D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdDiscount" id="97DF5A2B-E9D4-903F-A1B5-B7E78B2A17B8">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>54BB77B0-377A-29DE-E039-761B87214690</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TipDiscount" id="2AE18682-64B4-F363-4930-62C8281EADE9">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>E18B7969-6C26-C321-05C8-491B9072D7EC</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NumeDiscount" id="342099F1-40B2-FB75-E349-524BE8BE7334">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>86DB6EC7-F2BA-5061-C987-2F9871E104CD</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ProcentDiscount" id="4793087D-101A-1C14-BA01-3352624BD95F">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>17D2A1DC-464C-DF52-ACAC-0225C1A2F975</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Prescriptie_IdPrescriptie" id="1594E1AD-8549-C9B9-FD37-F71F4BA399FA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>3EEDB318-6230-58B1-E34B-9C059C99E509</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5E6AFE36-1979-11E0-684D-6D00ADEDFC01" referredColumn="BFA9A6F7-9701-F118-131E-EDA199461D2A"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_IDreteta" id="5582726F-0DB4-2718-7252-A00738814C05">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>380243B8-6FFC-4B4D-7CA7-DEC27EAF2C76</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5E6AFE36-1979-11E0-684D-6D00ADEDFC01" referredColumn="FDD26C4C-7918-E8A9-2DBE-B9F4E70B86DF"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_MEDIC_IDMedic" id="A4DB0145-5CC7-63AA-0C1D-ED58F612F999">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>54DC8A0B-5ADB-A810-15D9-1E68469FEC89</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5E6AFE36-1979-11E0-684D-6D00ADEDFC01" referredColumn="A97BFB6C-A90E-B032-B0F0-85B24A8C91C0"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_MEDIC_IDCabinet" id="B9A7F2C6-E39A-7AED-8C04-2858391C0FE7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>8CBAC1AA-A0B4-8AA5-2146-9F4C94B16F6D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataDiscount" id="9F2B4014-87DD-A085-6502-F4B6F356FE5C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>1C808B03-B640-4BB8-220C-EAE075B5706D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataModificareDiscount" id="B52AC534-5BAA-7549-28F4-538B21DAB186">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:56 UTC</createdTime>
+<generatorID>B50D3078-537D-3A31-D06E-9F266085C033</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3A1ABE50-32A4-FDCF-79EE-61385DFC46EC" name="Discount_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>98AB524F-C456-DFFC-32F1-2ACCACE9E2EC</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="97DF5A2B-E9D4-903F-A1B5-B7E78B2A17B8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32696885-9B6A-ECE4-9901-3E33CAC62F84" name="Discount__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>0A915619-5B9C-FA09-3F8D-00B2B51BDDC2</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1594E1AD-8549-C9B9-FD37-F71F4BA399FA"/>
+<colUsage columnID="5582726F-0DB4-2718-7252-A00738814C05"/>
+<colUsage columnID="A4DB0145-5CC7-63AA-0C1D-ED58F612F999"/>
+<colUsage columnID="B9A7F2C6-E39A-7AED-8C04-2858391C0FE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="02CAEAE3-936F-2D4D-9743-F52D88554922" name="Discount__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>0A915619-5B9C-FA09-3F8D-00B2B51BDDC2</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1594E1AD-8549-C9B9-FD37-F71F4BA399FA"/>
+<colUsage columnID="5582726F-0DB4-2718-7252-A00738814C05"/>
+<colUsage columnID="A4DB0145-5CC7-63AA-0C1D-ED58F612F999"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="82430E35-07E2-3850-591B-3C0DE4D25204" name="Discount_Prescriptie_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>0A915619-5B9C-FA09-3F8D-00B2B51BDDC2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1594E1AD-8549-C9B9-FD37-F71F4BA399FA"/>
+<colUsage columnID="5582726F-0DB4-2718-7252-A00738814C05"/>
+<colUsage columnID="A4DB0145-5CC7-63AA-0C1D-ED58F612F999"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

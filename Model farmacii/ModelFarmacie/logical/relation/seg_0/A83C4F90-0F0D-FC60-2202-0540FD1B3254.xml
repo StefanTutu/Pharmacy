@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ANGAJAT_FACTURA" directorySegmentName="seg_0" id="A83C4F90-0F0D-FC60-2202-0540FD1B3254">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 13:37:41 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<sourcePk>15AF927D-70BC-5B75-4D52-FDD7E57A7063</sourcePk>
+<arc>D3688800-B79F-68E7-F645-34E96B2DADD0</arc>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0ED9C4EA-2AE5-1136-470B-3F2B3EFD418F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>2C5243FE-0C28-ACF1-7A6F-78733257D2CA</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

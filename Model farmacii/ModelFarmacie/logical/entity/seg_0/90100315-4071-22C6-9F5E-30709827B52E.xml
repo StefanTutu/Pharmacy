@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="90100315-4071-22C6-9F5E-30709827B52E" name="ListaMedicamenteBoli">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:38:30 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdBoala" id="C19EB3A6-A0D6-4578-0F4C-2DD98F171EC0">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:38:52 UTC</createdTime>
+<generatorID>6FC12758-3CC4-6702-6C11-504B8E5A54E1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>346E7A0F-DF11-F563-F283-3F4CDF4B335F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDMedicament" id="A67D84BE-3769-91BB-A970-9BC346198119">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:39:00 UTC</createdTime>
+<generatorID>A096FF67-90CC-80ED-EFE2-7E3640E6188B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>08EB8B7C-2EE5-35B8-CB0B-91560E57D5DC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdLot" id="BD4B80D3-94FB-3A65-B3A0-71F81A103A14">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:39:00 UTC</createdTime>
+<generatorID>A096FF67-90CC-80ED-EFE2-7E3640E6188B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>450BB4A0-A3EF-4D97-A7C2-C3D1BAAA21FD</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdStoc" id="8CE99390-C7AD-8D11-5D03-0F66C6CE95FD">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:39:00 UTC</createdTime>
+<generatorID>A096FF67-90CC-80ED-EFE2-7E3640E6188B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>E0E28C23-D6B5-17D4-3577-D0C98D9F2931</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdStoc1" id="737C8860-93F5-754B-E80D-19BB981EB214">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:39:00 UTC</createdTime>
+<generatorID>A096FF67-90CC-80ED-EFE2-7E3640E6188B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>F300783E-6AEF-7E5F-7DEB-C0F046E3E3B9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdProducator" id="F9238EE2-7512-3028-E42B-F6F8E1FF339B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:39:00 UTC</createdTime>
+<generatorID>A096FF67-90CC-80ED-EFE2-7E3640E6188B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>372274E8-1770-97AA-F204-8DD789CC84F4</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdGrupBoli" id="CB352CC5-749A-B6E9-3DCA-8354B8D5EA43">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:39:51 UTC</createdTime>
+<generatorID>6FC12758-3CC4-6702-6C11-504B8E5A54E1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>7C343738-61C1-AD1A-57FC-026F21C93565</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BD70E98A-FECB-3747-8154-D4B4FDD5004D" name="ListaMedicamenteBoli PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:38:52 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C19EB3A6-A0D6-4578-0F4C-2DD98F171EC0</attributeRef>
+<attributeRef>CB352CC5-749A-B6E9-3DCA-8354B8D5EA43</attributeRef>
+<attributeRef>A67D84BE-3769-91BB-A970-9BC346198119</attributeRef>
+<attributeRef>BD4B80D3-94FB-3A65-B3A0-71F81A103A14</attributeRef>
+<attributeRef>8CE99390-C7AD-8D11-5D03-0F66C6CE95FD</attributeRef>
+<attributeRef>737C8860-93F5-754B-E80D-19BB981EB214</attributeRef>
+<attributeRef>F9238EE2-7512-3028-E42B-F6F8E1FF339B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

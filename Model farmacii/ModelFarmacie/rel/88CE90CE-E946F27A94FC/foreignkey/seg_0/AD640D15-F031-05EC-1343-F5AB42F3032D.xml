@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AD640D15-F031-05EC-1343-F5AB42F3032D" containerWithKeyObject="DBE50A59-95D6-9E45-3028-1DB3C210211D" localFKIndex="49426E06-633E-E233-942F-E4F0CA80AA29" name="Medicament_Prescriptie_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>07276132-5D55-9AB7-D6B3-17BEFC07AAC6</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D35C039E-7D21-08B1-EDFF-29C4B27F5C67</referredTableID>
+<keyObject>D9F3A9B0-C7DC-1542-0992-D54786524091</keyObject>
+<referredKeyID>D9F3A9B0-C7DC-1542-0992-D54786524091</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

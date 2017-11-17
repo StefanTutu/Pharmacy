@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B58E0E65-FF10-404A-788B-90716AA476F5" name="IstoricPacient">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:30:29 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdPacient" id="55E321D3-0B42-9E03-2938-4DFB9B586020">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:31:24 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataDeachizitie" id="4943619E-3612-4828-FAF5-744FECEEB746">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:30:50 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NumarDePrescriptiiAchizionate" id="1559D6BD-46FF-7763-F971-CFF1896B04CC">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:31:09 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPrescriptie" id="A5C90781-F63C-F841-FC4F-F151B96F04DE">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:33:09 UTC</createdTime>
+<generatorID>5091C03E-A070-4545-9902-03B5F3EA4828</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>F8845AE3-6DF2-0C93-1AEE-418F1E6B8D61</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDreteta" id="9023E2FE-5385-6708-5C4A-50F238A265A5">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:33:09 UTC</createdTime>
+<generatorID>5091C03E-A070-4545-9902-03B5F3EA4828</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>7CB46C18-AF4D-11C6-0804-69126CF351EC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDMedic" id="1E3F4E78-CB5A-6017-82D7-A40D6BE6C0FF">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:33:09 UTC</createdTime>
+<generatorID>5091C03E-A070-4545-9902-03B5F3EA4828</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>CAEC58B8-A673-A12E-06A5-CF366311B1DE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="74303A38-F964-4AFE-0204-933C9CEB2A4E" name="IstoricPacient PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:31:07 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4943619E-3612-4828-FAF5-744FECEEB746</attributeRef>
+<attributeRef>55E321D3-0B42-9E03-2938-4DFB9B586020</attributeRef>
+<attributeRef>A5C90781-F63C-F841-FC4F-F151B96F04DE</attributeRef>
+<attributeRef>9023E2FE-5385-6708-5C4A-50F238A265A5</attributeRef>
+<attributeRef>1E3F4E78-CB5A-6017-82D7-A40D6BE6C0FF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,120 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="80ED64C7-3F0E-9F4D-A4C1-B0576891EABD" name="ALTEPRODUSE">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:53:12 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDProdus" id="D679B964-148C-1922-7A7F-FAFB6E9E29E1">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:53:23 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DenumreProdus" id="6C71AB84-0CB4-982C-409B-C13DF08D3E90">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:19:20 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CategorieProdus" id="E69F207A-83A4-C18B-EB07-CAF4DD4E9A7F">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:19:33 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdStoc" id="9D33BD6C-7A69-38EB-0BCC-50EEB65A24F9">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:33:39 UTC</createdTime>
+<generatorID>4BBBD64F-CD03-23BF-7474-7C5B029C3B84</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>D92BD334-ACC5-64D6-9DFC-CC5D5D0CEDB7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdStoc1" id="B9FC994A-33BC-0BBE-8241-76592D38781A">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:33:39 UTC</createdTime>
+<generatorID>4BBBD64F-CD03-23BF-7474-7C5B029C3B84</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>ED57A4FF-1C5C-EDDD-CB2D-B7EE0EEBAEF8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdProducator" id="A707DBE8-BD5B-3F28-C390-98B8BCAF8675">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:33:39 UTC</createdTime>
+<generatorID>4BBBD64F-CD03-23BF-7474-7C5B029C3B84</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>AF426834-C626-3519-E2C6-2E54428DC130</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BEEC87CA-2F1A-1528-8264-04D9D83981A0" name="ALTEPRODUSE PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:20:11 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D679B964-148C-1922-7A7F-FAFB6E9E29E1</attributeRef>
+<attributeRef>9D33BD6C-7A69-38EB-0BCC-50EEB65A24F9</attributeRef>
+<attributeRef>B9FC994A-33BC-0BBE-8241-76592D38781A</attributeRef>
+<attributeRef>A707DBE8-BD5B-3F28-C390-98B8BCAF8675</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

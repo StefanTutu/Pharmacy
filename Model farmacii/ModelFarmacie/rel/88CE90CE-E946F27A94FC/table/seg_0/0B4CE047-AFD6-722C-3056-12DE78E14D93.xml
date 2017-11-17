@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0B4CE047-AFD6-722C-3056-12DE78E14D93" name="PartenerPersoana">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>C842B30C-5E06-1730-7DD1-B62D4F6012D3</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Parteneri_IdPartener" id="DCFCB6B4-47B5-F4FB-E04E-22002DAC88B1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>41C08501-992D-973B-4F0B-983C740A3667</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1DAFDB57-6307-8396-33DD-CE0B5EDE3E0C" referredColumn="199858CD-987E-9F4E-193B-7C70EDF004F4"/>
+</associations>
+</Column>
+<Column name="Persoane_IdPersoana" id="93E48ACD-2AA0-0DBD-73CC-FC52FAD8D1BF">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>1D1B68A3-3BE0-48CF-67A9-A6312F691F1A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BB14D1A3-93B1-0E32-460D-255FFCAB2E92" referredColumn="E161DF81-3E10-3BB3-86C0-31671AED3B9B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EE937C03-3815-47C6-ECFA-7194F1CFB12F" name="PartenerPersoana_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:38 UTC</createdTime>
+<generatorID>667F50E8-242A-8FFD-6204-D4DD4A2C5897</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DCFCB6B4-47B5-F4FB-E04E-22002DAC88B1"/>
+<colUsage columnID="93E48ACD-2AA0-0DBD-73CC-FC52FAD8D1BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C029704C-C4B0-951B-73E0-EFDC415D2598" name="PartenerPersoana_Persoane_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>30CBB624-41E9-C5CC-3B60-F19A01AAAADA</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="93E48ACD-2AA0-0DBD-73CC-FC52FAD8D1BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6D49AF45-E663-3253-1675-693EF2B14DE3" name="PartenerPersoana_Parteneri_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-29 18:46:39 UTC</createdTime>
+<generatorID>13E7D038-5EED-7B72-94AC-6E22783F7E49</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DCFCB6B4-47B5-F4FB-E04E-22002DAC88B1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,210 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="05D16BA2-53C4-2440-0816-DF4D9D90689F" name="Persoane">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>59A32897-B722-35B1-0E61-B99DDFF8B1BC</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdPersoana" id="E161DF81-3E10-3BB3-86C0-31671AED3B9B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>F99F336D-161F-0439-B3A7-29DF962058B5</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nume" id="D4E754D9-3CB6-18B9-586E-484B62538EC7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>98E5BE8A-056B-A421-77FC-1A998353A94F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Prenume" id="BADE14DD-40CF-A4FA-9E23-483D688AD443">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>2CE91A44-2189-A96C-E0BB-4E692D44AEDA</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Adresa" id="6787E372-3347-2AEB-7EFA-70EEA899C50A">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>AE1650B2-D142-1453-3C0E-3ADBDB2618D9</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CardDeFidelitate_IdCard" id="FE8E3790-2A9B-9C92-D2CB-66A728E698F6">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>18F5F251-C6E0-684E-EE8A-C8FB846A92DE</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="88D275AE-712D-61ED-5A2D-EE43644E1053" referredColumn="AC7C3E6F-1B52-C090-3E1C-CCD6D56B81C2"/>
+</associations>
+</Column>
+<Column name="Prescriptie_IdPrescriptie" id="C9E54751-09C9-3A1B-5FFC-56BBAE65286C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D6A51299-048D-CC69-FF1E-187116BFBDA1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF751C09-88AA-2E58-2907-B2A5E1C3B73A" referredColumn="BFA9A6F7-9701-F118-131E-EDA199461D2A"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_IDreteta" id="C192423A-2B3F-275A-7BAF-F669671CEE01">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>9D497031-9D43-6245-47F5-6D898089AC45</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF751C09-88AA-2E58-2907-B2A5E1C3B73A" referredColumn="FDD26C4C-7918-E8A9-2DBE-B9F4E70B86DF"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_MEDIC_IDMedic" id="2D72EC5E-4B7F-70D8-50BA-B04DC7DEA4B0">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>23D55B33-4C6B-6D4E-1EBE-2D9D5A1222F1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF751C09-88AA-2E58-2907-B2A5E1C3B73A" referredColumn="A97BFB6C-A90E-B032-B0F0-85B24A8C91C0"/>
+</associations>
+</Column>
+<Column name="Prescriptie_RETETA_MEDIC_IDCabinet" id="D3C7689C-0486-2F7A-21DB-55B7ECAED49B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>AA992284-6A46-2AF9-8954-B4C1EF947996</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9695A5BE-4F18-9D3A-F716-40A9FE5E69DA" name="Persoane_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>E833866F-3E47-577E-EF72-B5EBD3AE6649</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E161DF81-3E10-3BB3-86C0-31671AED3B9B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5E4BB4D-ABAA-63C2-693B-B32FEC0E03C9" name="Persoane__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>22FC9DD7-61C3-7D8A-6CCA-A1CF11BB56D0</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="FE8E3790-2A9B-9C92-D2CB-66A728E698F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DCD1A69F-1D60-BA1E-6959-8D190AFCBFE3" name="Persoane__IDXv1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>4BB49A12-7B33-E70B-CF6A-A69188A767FF</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C9E54751-09C9-3A1B-5FFC-56BBAE65286C"/>
+<colUsage columnID="C192423A-2B3F-275A-7BAF-F669671CEE01"/>
+<colUsage columnID="2D72EC5E-4B7F-70D8-50BA-B04DC7DEA4B0"/>
+<colUsage columnID="D3C7689C-0486-2F7A-21DB-55B7ECAED49B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6E893214-8AAE-74B0-3D7D-BBC42098E805" name="Persoane__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>4BB49A12-7B33-E70B-CF6A-A69188A767FF</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C9E54751-09C9-3A1B-5FFC-56BBAE65286C"/>
+<colUsage columnID="C192423A-2B3F-275A-7BAF-F669671CEE01"/>
+<colUsage columnID="2D72EC5E-4B7F-70D8-50BA-B04DC7DEA4B0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1069FA3E-6D74-BEB9-F5DB-01436249217B" name="Persoane_CardDeFidelitate_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>22FC9DD7-61C3-7D8A-6CCA-A1CF11BB56D0</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE8E3790-2A9B-9C92-D2CB-66A728E698F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F3435C33-A343-CC58-9EDD-B27C8C3F3232" name="Persoane_Prescriptie_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>4BB49A12-7B33-E70B-CF6A-A69188A767FF</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9E54751-09C9-3A1B-5FFC-56BBAE65286C"/>
+<colUsage columnID="C192423A-2B3F-275A-7BAF-F669671CEE01"/>
+<colUsage columnID="2D72EC5E-4B7F-70D8-50BA-B04DC7DEA4B0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

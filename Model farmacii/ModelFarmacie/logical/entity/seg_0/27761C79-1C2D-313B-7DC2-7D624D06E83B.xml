@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="27761C79-1C2D-313B-7DC2-7D624D06E83B" name="MedicamentPatentat">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:49:27 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdPreparareMedicament" id="7744F215-4ED3-4723-AA20-4E098FDFC3F5">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 14:49:45 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataProductie" id="C37833E4-10F2-B6A8-DED7-D2B38B11ABB2">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:49:45 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataExpirare" id="FC33EE29-7296-3058-5BD5-826F1F8747DE">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:50:06 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PretPreparereMedicament" id="6F7278F6-55EC-2392-91B0-C8957EA561D7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:50:29 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPreparareMedicament1" id="9F708F43-17B1-605B-7D41-1EFEB2461C6A">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:27:00 UTC</createdTime>
+<generatorID>F9F8BAEC-DBB4-3EE2-D195-A1DF0A798024</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>6DB85BAC-F606-22B5-D023-71B748A98D78</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdAngajat" id="AFD3CE44-A971-9F68-D026-3D95CE1A38E4">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:27:38 UTC</createdTime>
+<generatorID>F9F8BAEC-DBB4-3EE2-D195-A1DF0A798024</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>39E5101B-2230-1DCB-58A7-E3D77A0C893D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="54C8E26A-1D3F-FBC1-A9D9-6E46C3263707" name="MEDICAMENTPATENTAT PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:46:13 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7744F215-4ED3-4723-AA20-4E098FDFC3F5</attributeRef>
+<attributeRef>9F708F43-17B1-605B-7D41-1EFEB2461C6A</attributeRef>
+<attributeRef>AFD3CE44-A971-9F68-D026-3D95CE1A38E4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

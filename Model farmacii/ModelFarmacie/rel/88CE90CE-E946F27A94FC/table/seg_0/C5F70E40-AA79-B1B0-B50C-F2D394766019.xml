@@ -1,0 +1,372 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C5F70E40-AA79-B1B0-B50C-F2D394766019" name="StocFarmacie">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>ED0F3A53-E643-6FB4-45C6-35BCA872EC63</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IdStoc" id="4C2355C2-70D5-DBEA-E26B-8B3560EC2A04">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D92BD334-ACC5-64D6-9DFC-CC5D5D0CEDB7</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="StocCurent" id="191C51AA-2753-58DF-F91B-99BAE7B446F6">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>8CEDD42E-FDE8-8931-5354-95D32EF12B36</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TipProdus" id="61851F64-9D13-5E86-15F0-E273FF385E94">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>6C5F38F6-DCD7-8F5C-B6FC-48C13476A497</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CategorieProdus" id="01015C1A-CE9C-696F-E856-7FF2EBC97A1C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>856954F5-A5FC-EF01-0791-3CAAA7E8516C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Unitate_Masura" id="E6995E0B-5A69-37EE-76A7-E6D0C9F89212">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>533FBE4C-A495-F1F9-0E95-9956F36F4364</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataP" id="AB9E8951-69E7-D1CC-4809-FDF7FF47984C">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D35C6D67-692E-0E50-32E1-5B43B5BE76EE</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataE" id="66517F38-EBF1-4166-6C37-E26243CA2D09">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>01E74ABE-7A77-4B94-6E48-9F8215DB9441</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CantitateCumparata" id="DF2B6F19-307F-5FF1-9EA3-E4FE093CA8B4">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>50EE3804-9AD9-EDAA-DD5E-C434FEFAA07B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CantitateRamasa" id="4B366798-F0B2-CEEA-77B0-1BFF6F30FC50">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>CF5C39A1-38ED-6593-BAEF-74DE347A0525</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LOTMEDICAMENT_IdLot" id="7644E7C8-E43A-CB42-B56A-01AE339A0C42">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>A656482D-A0D6-6D73-CCE3-6F207F22776C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AABC675C-63E3-9E82-01CA-474937F4CAF2" referredColumn="B884C159-B98A-489B-896C-09A371D900B7"/>
+</associations>
+</Column>
+<Column name="ALTEPRODUSE_IDProdus" id="28E2B037-70A8-AEFE-6D10-BA0687A6ACE4">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>8395E275-2E0D-00AF-D95D-F0E68CE489DA</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B6D3E0D6-B3ED-9743-CE33-0197FC13166C" referredColumn="4D81F3CA-F61E-A7C8-F73A-56001872F18B"/>
+</associations>
+</Column>
+<Column name="ProducatoriProdus_IdStoc" id="66B72A8F-3BB4-269E-F6CE-3E8022697944">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>ED57A4FF-1C5C-EDDD-CB2D-B7EE0EEBAEF8</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8D89F65D-9CE9-3AED-B1E0-7368E55D90DD" referredColumn="AD384516-F25A-D192-39BC-F2ACA66C5FAE"/>
+</associations>
+</Column>
+<Column name="ProducatoriProdus_IdProducator" id="1750F695-3390-8476-31B8-CB3F0FDC6EC1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>AF426834-C626-3519-E2C6-2E54428DC130</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8D89F65D-9CE9-3AED-B1E0-7368E55D90DD" referredColumn="2412A940-EB76-7928-C442-3917A4082343"/>
+</associations>
+</Column>
+<Column name="AdaosComercial_AdaosComercial_ID" id="CB9B79EB-4C73-2CF8-3472-1EB85AB91A86">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F66D3A13-D4F5-786D-26A2-522D4F85B8B8" referredColumn="6C513906-FD4D-2917-CCBB-97A8DB3CAE20"/>
+</associations>
+</Column>
+<Column name="LinieBonFiscal_IDLinieBonFiscal" id="2A2EAD93-2B75-E03F-9B72-A86AB427E2B6">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>EB4FC432-597D-3E38-24A2-E8D7DD7B3116</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B51CCCEE-5CAB-0E15-7BB7-507A6BB6956C" referredColumn="DA77C844-5894-C577-18EF-3A530C939005"/>
+</associations>
+</Column>
+<Column name="LinieBonFiscal_IDStoc" id="A9B995E1-18E2-6A33-D951-AC3F65F3DB06">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>71606263-7336-32CC-2766-188D28400BFC</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B51CCCEE-5CAB-0E15-7BB7-507A6BB6956C" referredColumn="391E5B32-2E1E-4076-B345-34EC7BCE63B8"/>
+</associations>
+</Column>
+<Column name="LinieBonFiscal_IDClientPF" id="133F1345-9D3A-F547-284D-DF8944531C67">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>ED44BE73-F57E-CF4B-1892-DD81AC761C1C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B51CCCEE-5CAB-0E15-7BB7-507A6BB6956C" referredColumn="54EDCEE2-FCE7-7523-7E0E-3C56D8E52899"/>
+</associations>
+</Column>
+<Column name="LinieBonFiscal_BONFISCAL_IDBonFiscal" id="91175CE3-D489-B71F-FC13-64FB00CA4F34">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>029A6A6A-F19B-1118-B681-A88CE7223310</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B51CCCEE-5CAB-0E15-7BB7-507A6BB6956C" referredColumn="AC1FCB71-3098-08D6-1218-09FB00D97630"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="38BF9D5B-C3D2-854E-8930-58A31FFBB672" name="StocFarmacie_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>41870875-E999-0248-61A1-6DD252834E8D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C2355C2-70D5-DBEA-E26B-8B3560EC2A04"/>
+<colUsage columnID="66B72A8F-3BB4-269E-F6CE-3E8022697944"/>
+<colUsage columnID="1750F695-3390-8476-31B8-CB3F0FDC6EC1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B0F73CDF-D6F3-CB30-5734-BE351178A1FF" name="Stocuri__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>F51A0581-D6A5-46F0-9449-8402F474BD4A</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="7644E7C8-E43A-CB42-B56A-01AE339A0C42"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B7E37AB0-A71F-6322-5B10-19531343A22B" name="Stocuri__IDXv1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>24B474E6-CCE8-4949-BA8B-E8FF56EF6C33</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="28E2B037-70A8-AEFE-6D10-BA0687A6ACE4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DF998C0E-4192-A193-1815-C345BB4C0A3E" name="StocFarmacie__IDX">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>5AD8C176-749E-C100-09CF-BE5436A5F17F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="2A2EAD93-2B75-E03F-9B72-A86AB427E2B6"/>
+<colUsage columnID="A9B995E1-18E2-6A33-D951-AC3F65F3DB06"/>
+<colUsage columnID="133F1345-9D3A-F547-284D-DF8944531C67"/>
+<colUsage columnID="91175CE3-D489-B71F-FC13-64FB00CA4F34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="13C90B0B-4895-55B9-BFE6-E155B2EC52DC" name="Stocuri_LOTMEDICAMENT_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>F51A0581-D6A5-46F0-9449-8402F474BD4A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7644E7C8-E43A-CB42-B56A-01AE339A0C42"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="71FD6858-10F5-AE53-BDD8-BA5108118B64" name="Stocuri_ALTEPRODUSE_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>24B474E6-CCE8-4949-BA8B-E8FF56EF6C33</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28E2B037-70A8-AEFE-6D10-BA0687A6ACE4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7AF67883-DE58-21E1-3920-1532DEB034D9" name="StocFarmacie_ProducatoriProdus_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>377613D3-91AC-0682-4F42-AE2996F39E8A</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="66B72A8F-3BB4-269E-F6CE-3E8022697944"/>
+<colUsage columnID="1750F695-3390-8476-31B8-CB3F0FDC6EC1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="186EC217-7FF0-4C7D-0096-3A09DC5A0876" name="StocFarmacie_AdaosComercial_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>1EC78A4A-40EA-527F-F57A-E6F6C55FF174</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB9B79EB-4C73-2CF8-3472-1EB85AB91A86"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5C9DCF76-E4F4-13F6-C90B-1E1106152EFC" name="StocFarmacie_LinieBonFiscal_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>5AD8C176-749E-C100-09CF-BE5436A5F17F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2A2EAD93-2B75-E03F-9B72-A86AB427E2B6"/>
+<colUsage columnID="A9B995E1-18E2-6A33-D951-AC3F65F3DB06"/>
+<colUsage columnID="133F1345-9D3A-F547-284D-DF8944531C67"/>
+<colUsage columnID="91175CE3-D489-B71F-FC13-64FB00CA4F34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

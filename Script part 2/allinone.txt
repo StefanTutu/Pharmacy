@@ -1,0 +1,1707 @@
+CREATE TABLE farmacii (	
+	IdFarmacie NUMBER(7) PRIMARY KEY,
+	NumeFarmacie VARCHAR2(50) NOT NULL,
+	AdresaFarmacie VARCHAR2(100),
+	Gestionar VARCHAR(30),
+	Judet VARCHAR(10),
+	Telefon VARCHAR2(12)
+	) ;
+  
+CREATE TABLE plafon_retete (
+ IdFarmacie NUMBER(7) REFERENCES farmacii(IdFarmacie),
+ Luna NUMBER(2) NOT NULL CONSTRAINT ck_Luna CHECK (Luna >= 1 and luna <= 12),
+ An NUMBER(4) NOT NULL CONSTRAINT ck_an CHECK (an >= 2010),
+ SumaPlafon NUMBER(14,2),
+ PRIMARY KEY (IdFarmacie, an, luna)
+); 
+
+CREATE TABLE furnizori (	
+	IdFurnizor NUMBER(7) PRIMARY KEY,
+	NumeFurnizor VARCHAR2(50) NOT NULL,
+	PersoanaContact VARCHAR2(30),
+	Localitate VARCHAR2(30),
+	CodFiscal VARCHAR(20),
+	Telefon VARCHAR2(12),
+	Email VARCHAR2(50)
+	) ;
+
+CREATE TABLE comenzi_farmacie (
+	IdComandaFarmacie NUMBER(12) PRIMARY KEY,
+  IdFarmacie NUMBER(7) NOT NULL REFERENCES farmacii (IdFarmacie),
+  ValoareComanda NUMBER(12,2)  NOT NULL ,
+	DataComanda DATE DEFAULT CURRENT_DATE,
+	ObsComanda VARCHAR2(30)	,
+  comandaPreluata CHAR(1) DEFAULT 'N' CHECK (comandaPreluata IN ('D', 'N'))
+	) ;
+	
+CREATE TABLE comenzi_finale (
+	IdComandaFinala NUMBER(12) PRIMARY KEY,
+  IdFurnizor NUMBER(7) NOT NULL REFERENCES furnizori (IdFurnizor),
+  ValoareComandaFinala NUMBER(12,2)  NOT NULL ,
+	DataComandaFinala DATE DEFAULT CURRENT_DATE,
+	ObsComandaFinala VARCHAR2(30)	
+	) ;
+
+CREATE TABLE facturi (
+	IdFactura NUMBER(10) PRIMARY KEY,
+	NrFactura NUMBER(8) NOT NULL,
+	DataFact DATE DEFAULT CURRENT_DATE,
+	ValoareFactura NUMBER(12,2),
+	TVAFactura NUMBER(11,2) DEFAULT .19,
+	IdComandaFinala NUMBER(12) NOT NULL REFERENCES comenzi_finale (IdComandaFinala),
+  TotalIncasat NUMBER(11,2)
+	);
+
+CREATE TABLE achitare (
+	IdAchitareF NUMBER(10) PRIMARY KEY,
+	SerieDoc NUMBER(8) NOT NULL,
+	DataAchitare DATE DEFAULT CURRENT_DATE
+	);
+
+CREATE TABLE achitare_transe (
+  IdFactura NUMBER(10) NOT NULL REFERENCES facturi (IdFactura),
+	IdAchitareF NUMBER(10) NOT NULL REFERENCES achitare (IdAchitareF),
+	Transa NUMBER(12,2),
+  PRIMARY KEY (IdFactura, IdAchitareF)
+	);
+  
+CREATE TABLE aviz_insotire (
+	IdAvizInsotire NUMBER(10) PRIMARY KEY,
+	DataAvizInsotire DATE DEFAULT CURRENT_DATE,
+	ValoareAvizInsotire NUMBER(12,2),
+	TVAavizInsotire NUMBER(11,2) DEFAULT .19,
+  IdComandaFarmacie NUMBER(12) NOT NULL REFERENCES comenzi_farmacie (IdComandaFarmacie)
+	);
+
+CREATE TABLE medicamente (
+	IdMedicament NUMBER(10) PRIMARY KEY,
+  NumeMedicament VARCHAR2 (20),
+	ObsMedicament VARCHAR2 (50),
+  Prescris VARCHAR2(2) DEFAULT 'NU' CONSTRAINT nn_Prescris NOT NULL
+        CONSTRAINT ck_Prescris CHECK (Prescris IN ('DA', 'NU')),
+  TipMedicament CHAR(1) DEFAULT 'A' CONSTRAINT ck_tipMed CHECK (tipMedicament in ('A', 'P'))
+  ) ;
+  
+CREATE TABLE medicamente_achiz (
+	IdMedAchiz NUMBER(10) PRIMARY KEY REFERENCES medicamente (IdMedicament), 
+  UMmedAchiz VARCHAR2(10),
+  ConcentratieMedAchiz VARCHAR2(10),
+  Stoc NUMBER(8),
+  CompozitieMedAchiz VARCHAR2(60),
+  DataExpir DATE,
+  PretMedAchiz NUMBER(12,2)
+	) ;
+
+CREATE TABLE medicamente_preparate (
+	IdMedPrep NUMBER(10) PRIMARY KEY REFERENCES medicamente (IdMedicament),
+  DataExpir DATE,
+  DataFabr DATE DEFAULT CURRENT_DATE,
+  PretMedPrep NUMBER(12,2) 
+	) ;
+
+CREATE TABLE substante (
+	IdSubstanta NUMBER(10) PRIMARY KEY,
+	DenSubstanta VARCHAR2(30),
+  UM VARCHAR2(10),
+	ObsSubstanta VARCHAR2 (50),
+  Pret NUMBER(12,2)
+	) ; 
+
+CREATE TABLE preparat (
+	IdPreparat NUMBER(10) PRIMARY KEY,
+  IdMedPrep NUMBER(10) NOT NULL REFERENCES medicamente_preparate(IdMedPrep),
+	DenPreparat VARCHAR2(30),
+  UM VARCHAR2(10),
+  Concentratie VARCHAR2(10),
+  StocCurent NUMBER(8)
+	) ; 
+
+CREATE TABLE Substanta_Preparat (
+    IdSubstanta NUMBER(8)
+      CONSTRAINT fk_SubstantaPreparat_Substante REFERENCES Substante(IdSubstanta),
+    IdPreparat NUMBER(8)
+      CONSTRAINT fk_SubstantaPreparat_Preparat REFERENCES Preparat(IdPreparat),
+    CantitateNecesara NUMBER(10,2),
+    UM VARCHAR2 (10),
+    CONSTRAINT pk_SubstantaPreparat PRIMARY KEY (IdPreparat, IdSubstanta)
+    ) 
+ ;
+ 
+ CREATE TABLE Lot (
+    IdLot NUMBER(8)
+      CONSTRAINT pk_Lot PRIMARY KEY
+      CONSTRAINT ck_IdLot CHECK (IdLot > 0)
+      CONSTRAINT nn_IdLot NOT NULL,
+    IdMedicament NUMBER (10)
+      CONSTRAINT fk_Lot_Medicamente REFERENCES Medicamente(IdMedicament),
+    DataFabricatie DATE
+       CONSTRAINT ck_DataFabricatie CHECK (DataFabricatie >= TO_DATE('01/01/2007','DD/MM/YYYY')),
+    DataExpirarii DATE,
+    Observatii VARCHAR2(40) 
+    )
+  ;
+  
+CREATE TABLE Cantitate_Lot (
+    IdAvizInsotire NUMBER (8) 
+      CONSTRAINT fk_CantitateLot_AvizInsotire REFERENCES Aviz_Insotire(IdAvizInsotire),
+    IdLot NUMBER(8)
+      CONSTRAINT fk_CantitateLot_Lot REFERENCES Lot(IdLot),
+    CantitateReceptionata NUMBER (12,2)
+      CONSTRAINT ck_CantitateReceptionata CHECK (CantitateReceptionata > 0),
+    CONSTRAINT pk_cantitatelot PRIMARY KEY (IdAvizInsotire, IdLot)
+    )
+  ;
+
+CREATE TABLE Comanda_Finala_Medicament (
+    IdMedicament NUMBER(10) REFERENCES Medicamente(IdMedicament),
+    IdComandaFinala NUMBER(8) REFERENCES Comenzi_Finale(IdComandaFinala),
+    CantitateComandataFinala NUMBER(12,2)
+        CONSTRAINT ck_CantitateComandataFinala CHECK (CantitateComandataFinala >= 0),
+    PretUnitar NUMBER(12,2)
+    )
+;
+
+CREATE TABLE Grupa_Boala (
+    IdGrupaBoala NUMBER(8) 
+      CONSTRAINT pk_GrupaBoala PRIMARY KEY
+      CONSTRAINT ck_IdGrupaBoala CHECK (IdGrupaBoala > 0)
+      CONSTRAINT nn_IdGrupaBoala NOT NULL,
+    DenumireGrupa VARCHAR2 (40)
+      CONSTRAINT ck_DenumireGrupa_GrupaBoala CHECK (SUBSTR(DenumireGrupa,1,1) = UPPER(SUBSTR(DenumireGrupa,1,1))),
+    ObservatiiGrupa VARCHAR2 (40), 
+    Prioritate NUMBER(2)
+    )
+;
+  
+CREATE TABLE Boala (
+    IdBoala NUMBER(8)
+      CONSTRAINT pk_Boala PRIMARY KEY
+      CONSTRAINT ck_IdBoala CHECK (IdBoala > 0)
+      CONSTRAINT nn_IdBoala NOT NULL,
+    NumeBoala VARCHAR2(40) NOT NULL
+      CONSTRAINT ck_NumeBoala_Boala CHECK (SUBSTR(NumeBoala,1,1) = UPPER(SUBSTR(NumeBoala,1,1))),
+    ObservatiiBoala VARCHAR2 (40),
+    IdGrupaBoala NUMBER(6)
+      CONSTRAINT fk_Boala_GrupaBoala REFERENCES Grupa_Boala(IdGrupaBoala)
+    )
+;
+  
+CREATE TABLE Medic (
+    IdMedic NUMBER(8)
+      CONSTRAINT pk_Medic PRIMARY KEY
+      CONSTRAINT ck_IdMedic CHECK (IdMedic > 0)
+      CONSTRAINT nn_IdMedic NOT NULL,
+    Nume VARCHAR2(40)
+      CONSTRAINT ck_Nume_Medic CHECK (SUBSTR(Nume,1,1) = UPPER(SUBSTR(Nume,1,1))),
+    Specializare VARCHAR2(35),
+    Adresa VARCHAR2(40),
+    Localitate VARCHAR2 (25),
+    Telefon VARCHAR2 (10)
+    )
+;
+    
+CREATE TABLE Reducere (
+    IdReducere NUMBER(8)
+      CONSTRAINT pk_Reducere PRIMARY KEY
+      CONSTRAINT ck_IdReducere CHECK (IdReducere > 0)
+      CONSTRAINT nn_IdReducere NOT NULL,
+    DenumireReducere VARCHAR2(25),
+    TipReducere CHAR(1) DEFAULT 'M' CONSTRAINT ck_tipRed CHECK (tipReducere in ('M', 'S'))
+    )
+;
+  
+CREATE TABLE Categorii_Medicamente (
+    IdCategMedicamente NUMBER(8)
+      CONSTRAINT pk_CategMedicamente PRIMARY KEY
+      CONSTRAINT fk_CategMedicamente_Reducere REFERENCES Reducere(IdReducere)
+      CONSTRAINT ck_IdCategMedicamente CHECK (IdCategMedicamente > 0)
+      CONSTRAINT nn_IdCategMedicamente NOT NULL,
+    Procent NUMBER (4,2),
+    Observatii VARCHAR2(40)
+    )
+;
+  
+CREATE TABLE Categorii_SocioProfesionale (
+    IdCategSocioProf NUMBER(8)
+      CONSTRAINT pk_C PRIMARY KEY
+      CONSTRAINT fk_CategSocio REFERENCES Reducere(IdReducere)
+      CONSTRAINT ck_IdCategsocio CHECK (IdCategSocioProf > 0),
+    Procent NUMBER (4,2),
+    Observatii VARCHAR2(40)
+    )
+;
+  
+CREATE TABLE Pacient (
+  IdPacient NUMBER(8)
+    CONSTRAINT pk_pacient PRIMARY KEY
+    CONSTRAINT ck_Idpacient CHECK (IdPacient > 0)
+    CONSTRAINT nn_IdPacient NOT NULL,
+  NumePrenume VARCHAR2(40),
+  DataNasterii DATE,
+  CNP VARCHAR2(14),
+  Judet VARCHAR2(20),
+  Statut VARCHAR2 (15)
+  )
+;
+ 
+CREATE TABLE Reteta (
+    IdReteta NUMBER (8)
+      CONSTRAINT pk_Reteta PRIMARY KEY
+      CONSTRAINT ck_IdReteta CHECK (IdReteta > 0)
+      CONSTRAINT nn_IdReteta NOT NULL,
+    DataEliberarii DATE,
+    DataIncheierii DATE DEFAULT CURRENT_DATE,
+    IdBoala NUMBER(8) CONSTRAINT fk_Reteta_Boala REFERENCES Boala(IdBoala),
+    IdMedic NUMBER(8) CONSTRAINT fk_Reteta_Medic REFERENCES Medic(IdMedic),
+    IdReducere NUMBER(8) CONSTRAINT fk_Reteta_Reducere REFERENCES Reducere(IdReducere),
+    IdPacient NUMBER(8) CONSTRAINT fk_Reteta_Pacienti REFERENCES Pacient(idpacient),
+    validare CHAR(1) DEFAULT 'N' CONSTRAINT ck_validare_reteta CHECK (validare IN ('D', 'N'))
+    )
+;
+  
+CREATE TABLE Medicamente_Reteta (
+    IdMedicament NUMBER(10)
+      CONSTRAINT fk_medicreteta REFERENCES Medicamente(IdMedicament),
+    IdReteta NUMBER (8)
+      CONSTRAINT fk_retetamedic REFERENCES Reteta(IdReteta),
+    UM VARCHAR2(10),
+    CantitatePrescrisa NUMBER (8,2),
+    Prescriptie VARCHAR2(50),
+    SumaMedicament NUMBER(12,2),
+    SumaReducere NUMBER(12,2),
+    CONSTRAINT pk_medicreteta PRIMARY KEY (IdReteta, IdMedicament)
+    )
+;
+  
+CREATE TABLE reducere_categ_medicamente (
+	idmedicament NUMBER(5) CONSTRAINT fk_medcreducere REFERENCES medicamente(idmedicament) ,
+ 	idcategmedicamente NUMBER(5) CONSTRAINT fk_medireducere REFERENCES categorii_medicamente(idcategmedicamente) ,
+	pretredus NUMBER (12,2),
+  CONSTRAINT pk_reducere_medicamente PRIMARY KEY (idmedicament, idcategmedicamente)
+	)
+;
+
+CREATE TABLE categ_fidelitate (
+	idcategfidelitate NUMBER(5) PRIMARY KEY,
+	denumire VARCHAR2 (35),
+	procent NUMBER(2,2)
+	)
+;
+ 
+CREATE TABLE card_fidelitate (
+    idCardFidelitate NUMBER(5)
+        CONSTRAINT pk_card_fidelitate PRIMARY KEY,
+    IdPacient NUMBER(8) REFERENCES pacient(IdPacient),
+    IdCategfidelitate NUMBER(5) REFERENCES categ_fidelitate(IdCategFidelitate),
+    DataInreg DATE DEFAULT CURRENT_DATE,
+    ValCump NUMBER(10,2),
+    DataExp DATE
+    ) 
+ ;
+
+CREATE TABLE receptie_medicam_furniz (
+	idmedicament NUMBER(5) CONSTRAINT fk_medicfurnizor REFERENCES medicamente(idmedicament) ,
+  idfactura NUMBER(5) CONSTRAINT fk_facturafurnizor REFERENCES facturi(idfactura) ,
+	cantitreceptionata NUMBER(6),
+	pret NUMBER(10,2),
+	CONSTRAINT pk_receptie PRIMARY KEY (idfactura, idmedicament)
+	)
+;
+
+CREATE TABLE reducere_procent (
+--	idmedicament NUMBER(5) CONSTRAINT fk_medicprocent REFERENCES medicamente(idmedicament) ,
+  idgrupaboala NUMBER(5) CONSTRAINT fk_grupareducere REFERENCES grupa_boala(idgrupaboala) ,
+	idpacient NUMBER(5) CONSTRAINT fk_pacient_reducere_procent REFERENCES pacient(idpacient) ,
+  IdReducere NUMBER(5) REFERENCES Reducere(IdReducere) ,
+	ProcentReducere NUMBER (4,2) NOT NULL,
+    	CONSTRAINT pk_reducere_procent PRIMARY KEY (idgrupaboala, idpacient, idreducere)
+--	CONSTRAINT pk_reducere_procent PRIMARY KEY (idmedicament, idgrupaboala, idpacient, idreducere)
+	)
+;
+
+CREATE TABLE Retur (
+	idReturMedicament NUMBER(5)	CONSTRAINT pk_retur PRIMARY KEY,
+  dataretur date
+	)
+;
+
+CREATE TABLE retur_lot (
+	idreturmedicament NUMBER(5) CONSTRAINT fkRetur_ReturLot REFERENCES retur(idreturmedicament) ,
+	IdComandaFarmacie NUMBER(12) CONSTRAINT fkReturLotCdaFarm REFERENCES Comenzi_farmacie(idcomandafarmacie) ,
+  idlot NUMBER(5) CONSTRAINT fk_lot_retur_lot REFERENCES lot(idlot) ,
+	cantitatereturnata NUMBER (6),
+	motivreturnare VARCHAR2 (30)
+	)
+;
+
+CREATE TABLE bon_casa (
+	idboncasa NUMBER(5) CONSTRAINT pk_boncasa PRIMARY KEY,
+	Databon DATE DEFAULT CURRENT_DATE,
+	sumareducere NUMBER(12,2),
+	sumatotala NUMBER(12,2),
+  IdFarmacie NUMBER(7) NOT NULL REFERENCES farmacii (IdFarmacie)
+--  existaBonReteta NUMBER(1);
+--  existaBonCard NUMBER(1);
+	)
+;	
+
+CREATE TABLE bon_card_fidelitate (
+  idBonCasa NUMBER(5) REFERENCES bon_casa(idBonCasa) ,
+  idCardFidelitate NUMBER(5) REFERENCES Card_Fidelitate(idCardFidelitate) ,
+  Suma NUMBER(10,2),
+  SumaReducere NUMBER(10,2),
+  PRIMARY KEY (idBonCasa, idCardFidelitate)
+  )
+;
+
+CREATE TABLE medicament_bon (
+	idboncasa NUMBER(5) CONSTRAINT fk_bonCasa_medicament_bon REFERENCES bon_casa(idboncasa) ,
+  idcardFidelitate NUMBER(5) CONSTRAINT fk_MedBonCardFid REFERENCES card_fidelitate(idcardFidelitate),
+	idmedicament NUMBER(5) CONSTRAINT fk_medicamentbon REFERENCES medicamente(idmedicament) ,
+	cantitvanduta NUMBER (6),
+	pretunitar NUMBER (7),
+	CONSTRAINT pk_medicament_bon PRIMARY KEY (idboncasa, idmedicament)
+	)
+;
+
+CREATE TABLE bon_reteta (
+  idBonCasa NUMBER(5) REFERENCES bon_casa(idBonCasa) ,
+  idReteta NUMBER(5) REFERENCES Reteta(idReteta) ,
+  Suma NUMBER(10,2),
+  SumaReducere NUMBER(10,2),
+  PRIMARY KEY (idBonCasa, idReteta)
+  )
+;
+
+CREATE TABLE medicament_farmacie_comanda (
+	idmedicament NUMBER(5) CONSTRAINT fk_medicamente_comanda REFERENCES medicamente(idmedicament) ,
+  idcomandafarmacie NUMBER(5) CONSTRAINT fk_comanda_comanda REFERENCES comenzi_farmacie(idcomandafarmacie) ,
+	cantitcomandafarmacie NUMBER (6),
+	pretcomandafarmacie NUMBER (7),
+  CONSTRAINT pk_medicament_farmacie_comanda PRIMARY KEY (idcomandafarmacie, idmedicament)
+	)
+;
+
+CREATE TABLE drepturi (
+	utilizator VARCHAR2(30),
+	idpacient NUMBER(5)
+        	CONSTRAINT fk_drept_pacient REFERENCES pacient(idpacient),
+	drept_inserare CHAR(1) DEFAULT 'N' NOT NULL
+		CONSTRAINT ck_drept_ins CHECK (drept_inserare IN ('D','N')),
+	drept_modificare CHAR(1) DEFAULT 'N' NOT NULL
+		CONSTRAINT ck_drept_upd CHECK (drept_modificare IN ('D','N')),
+	drept_stergere CHAR(1) DEFAULT 'N' NOT NULL
+		CONSTRAINT ck_drept_del CHECK (drept_stergere IN ('D','N')),
+	PRIMARY KEY (utilizator, idpacient)
+	) ;
+
+CREATE TABLE jurnal (
+	idactualizare NUMBER(18) PRIMARY KEY,
+	dataora TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	operator VARCHAR2(30) DEFAULT USER NOT NULL,
+	tabela VARCHAR2(30),
+	tip_actualizare CHAR(1) DEFAULT 'I' 
+		NOT NULL CONSTRAINT ck_jurnal_tipact CHECK (tip_actualizare IN ('I', 'U', 'D')),
+	vechea_inegistrare VARCHAR2(1000), 
+	noua_inregistrare VARCHAR2(1000)
+	) ;
+
+-- tabela INCHIDERI contine lunile pentru care s-a facut inchiderea contabila
+CREATE TABLE inchideri (
+	an NUMBER(4),
+	luna NUMBER(2),
+	datainchiderii DATE DEFAULT CURRENT_DATE NOT NULL,
+	operator VARCHAR2(30) DEFAULT USER,
+	PRIMARY KEY (an, luna)
+	) ;
+
+INSERT INTO inchideri (an, luna) VALUES (2017,1) ;
+
+drop sequence seq_idBonCasa; 
+drop sequence seq_idReturMedicament; 
+drop sequence seq_idCardFidelitate; 
+drop sequence seq_idCategFidelitate;
+drop sequence seq_idReteta;
+drop sequence seq_idPacient;
+drop sequence seq_idCategSocioProf;
+drop sequence seq_idCategMedicamente;
+drop sequence seq_idReducere;
+drop sequence seq_idMedic;
+drop sequence seq_idBoala;
+drop sequence seq_idGrupaBoala;
+drop sequence seq_idLot;
+drop sequence seq_idPreparat ;
+drop sequence seq_idSubstante ;
+drop sequence seq_idMedicamente ;
+drop sequence seq_idAvizInsotire ;
+drop sequence seq_idAchitareF ;
+drop sequence seq_idFactura ;
+drop sequence seq_idComandaFinala ;
+drop sequence seq_idComandaFarmacie ;
+drop sequence seq_idFurnizor ; 
+drop sequence seq_idFarmacie ;
+drop sequence seq_idactualizare;
+-------------------------------------------------
+CREATE SEQUENCE seq_idactualizare START WITH 1 MINVALUE 1 MAXVALUE 999999999999999999
+	INCREMENT BY 1 ORDER NOCACHE ;
+-------------------------------------------------
+create sequence seq_idBonCasa increment by 1
+    minvalue 101 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idReturMedicament increment by 1
+    minvalue 1 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idCardFidelitate increment by 1
+    minvalue 101 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idCategFidelitate increment by 1
+    minvalue 1000 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idReteta increment by 1
+    minvalue 20001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idPacient increment by 1
+    minvalue 1 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idCategSocioProf increment by 1
+    minvalue 5007 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idCategMedicamente increment by 1
+    minvalue 5000 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idReducere increment by 1
+    minvalue 5000 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idMedic increment by 1
+    minvalue 10001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idBoala increment by 1
+    minvalue 2001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idGrupaBoala increment by 1
+    minvalue 1001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idLot increment by 1
+    minvalue 1 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idPreparat increment by 1
+    minvalue 89001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idSubstante increment by 1
+    minvalue 35001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idMedicamente increment by 1
+    minvalue 7001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idAvizInsotire increment by 1
+    minvalue 100001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idAchitareF increment by 1
+    minvalue 9001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idFactura increment by 1
+    minvalue 19001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idComandaFinala increment by 1
+    minvalue 60001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idComandaFarmacie increment by 1
+    minvalue 50001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idFurnizor increment by 1
+    minvalue 201 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+create sequence seq_idFarmacie increment by 1
+    minvalue 1001 maxvalue 999999 nocycle nocache order;
+-------------------------------------------------
+--delete from inchideri;
+delete from drepturi;
+delete from plafon_retete;
+delete from bon_card_fidelitate;
+delete from bon_reteta;
+delete from medicament_farmacie_comanda;
+delete from medicament_bon;
+delete from bon_casa; 
+delete from retur_lot; 
+delete from retur; 
+--delete from medicamente_prescrise ;
+delete from reducere_procent;
+delete from receptie_medicam_furniz;
+delete from card_fidelitate; 
+delete from categ_fidelitate;
+delete from reducere_categ_medicamente;  
+delete from medicamente_reteta;
+delete from reteta;
+delete from pacient;
+delete from categorii_socioprofesionale;
+delete from categorii_medicamente;
+delete from reducere;
+delete from Medic;
+delete from Boala;
+delete from Grupa_Boala;
+delete from Comanda_Finala_Medicament;
+delete from Cantitate_Lot;
+delete from Lot;
+delete from Substanta_Preparat;
+delete from Preparat ;
+delete from Substante ;
+delete from Medicamente_Preparate ;
+delete from Medicamente_Achiz ;
+delete from Medicamente ;
+delete from Aviz_Insotire ;
+delete from Achitare_Transe ;
+delete from Achitare ;
+delete from Facturi ;
+delete from Comenzi_Finale ;
+delete from Comenzi_Farmacie ;
+delete from Furnizori ; 
+delete from Farmacii ;
+
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 1', 'Copou 3', 'Maria Ionescu','Iasi', '0232 219221') ;
+INSERT INTO farmacii (Idfarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 2', 'Independentei, 23', 'Rares Dragomir','Iasi', '0232 210001') ;
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 3', 'Tudor Vladimirescu, 3D', 'Madalina Florescu','Iasi', '0232 235221') ;
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 4', 'Valea Alba, A2', 'Elena Pascu','Iasi', '0232 234521') ;
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 5', 'Piata Unirii', 'Anca Popescu','Iasi', '0232 217891') ;
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 6', 'Tudor Vladimirescu, Iulius Mall', 'Cella Tremurici','Iasi', '0232 215551') ;
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 7', 'Pacurari', 'Tiberiu Stan','Iasi', '0232 215431') ;
+INSERT INTO farmacii (idFarmacie,NumeFarmacie,	AdresaFarmacie, Gestionar, Judet, Telefon) VALUES (SEQ_IDFARMACIE.NEXTVAL,'Ropharma 8', 'Copou 10', 'Roxana Stafie','Iasi', '0232 287641') ;
+
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Farmiz', 'George Brun', 'Iasi', '6859662', '0232 122326', ' farmiz@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Demi', 'Bogdan Mihalea', 'Iasi', '6834562', '0232 123323', 'demi@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Dodac', 'Lucian Ghizmo', 'Iasi', '6857772', '0232 123426', 'dodac@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Medimfarm', 'Paul Toderica', 'Iasi', '6858762', '0232 120006', 'medimfarm@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Alteoma', 'Codrin Ropota', 'Iasi', '680982', '0232 123400', 'alteoma@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Remedica', 'Ioana Bruma', 'Iasi', '6859002', '0232 123455', 'remedica@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Caritax', 'Corina Badea', 'Iasi', '6009662', '0232 129956', 'caritax@mail.com') ;
+INSERT INTO furnizori (idfurnizor,NumeFurnizor, PersoanaContact, Localitate, CodFiscal, Telefon, Email) VALUES (SEQ_IDFurnizor.NEXTVAL,'Pex', 'Ciprian Codrescu', 'Iasi', '6823262', '0232 198456', 'pex@mail.com') ;
+
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,iDfARMACIE, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1001, 2450, DATE'2016-01-14', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1004, 56050, DATE'2016-01-10', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1006, 1850, DATE'2016-01-04', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1001, 38450, DATE'2016-01-08', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1007,  7050, DATE'2016-01-12', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1005, 16350, DATE'2016-01-13', 'comanda farmacia 6') ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1003,  6800, DATE'2016-01-11', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1007,4500, DATE'2016-01-07', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1002, 5000, DATE'2016-01-05', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1008, 24000, DATE'2016-01-03', NULL) ;
+INSERT INTO comenzi_farmacie (IDCOMANDAFARMACIE,IdFarmacie, ValoareComanda, DataComanda, ObsComanda) VALUES (SEQ_IDCOMANDAFARMACIE.NEXTVAL,1004, 34000, DATE'2017-01-01', NULL) ;
+
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,201, 50000, DATE'2016-08-14', 'Comanda depozit') ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,202, 42000, DATE'2016-08-14', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,208,  2900, DATE'2016-08-14', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,201, 20000, DATE'2016-10-14', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,203,34000, DATE'2016-08-10', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,205, 50000, DATE'2016-10-10', 'Comanda finala') ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,207,80000, DATE'2016-08-14', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,203, 50000, DATE'2016-08-10', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,203,  70000, DATE'2016-09-14', NULL) ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,204,  60000, DATE'2016-10-14','Comanda depozit') ;
+INSERT INTO comenzi_finale (iDcOMANDAFINALA,IdFurnizor, ValoareComandaFinala, DataComandaFinala, ObsComandaFinala) VALUES (SEQ_IDCOMANDAFINALA.NEXTVAL,206, 50000, DATE'2016-08-14', NULL) ;
+
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500501, DATE'2016-01-06', 45000, .19, 60001) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500502, DATE'2016-04-07', 20000, .19, 60002) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500503, DATE'2016-08-03', 50000, .19, 60003) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500504, DATE'2016-09-05', 23000, .19, 60004) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500505, DATE'2016-01-09', 20500, .19, 60005) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500506, DATE'2016-01-10', 7000, .19, 60006) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500507, DATE'2016-01-11', 20000, .19, 60007) ;
+INSERT INTO facturi (IDFACTURA,NrFactura, DataFact, ValoareFactura, TVAFactura, IdComandaFinala) VALUES (SEQ_IDFACTURA.NEXTVAL,500508, DATE'2016-01-12', 14000, .19, 60008) ;
+
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1501, DATE'2016-01-06') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1502, DATE'2016-01-01') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1503, DATE'2016-01-14') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1504, DATE'2016-02-12') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1505, DATE'2016-03-09') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1506, DATE'2016-01-05') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1507, DATE'2016-05-10') ;
+INSERT INTO achitare (IDACHITAREF,SerieDoc, DataAchitare) VALUES (SEQ_IDACHITAREF.NEXTVAL,1508, DATE'2016-06-12') ;
+ 
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19008, 9008, 2700) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19006, 9002, 12000) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19005, 9005, 5000) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19004, 9006, 1000) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19006, 9004, 2500) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19002, 9001, 3000) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19003, 9003, 4000) ;
+INSERT INTO achitare_transe(IDFACTURA,IDACHITAREF,TRANSA) VALUES ( 19002, 9007, 1000) ; 
+ 
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-03', 4700, .19, 50004);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-05', 3500, .19, 50011);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-06', 3400, .19, 50006);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-01', 12000, .19, 50007);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-13', 2200, .19, 50003);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-10', 6500, .19, 50003);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2016-01-08', 2300, .19, 50009);
+INSERT INTO aviz_insotire (IDAVIZINSOTIRE,DataAvizInsotire, ValoareAvizInsotire, TVAavizInsotire, IdComandaFarmacie) VALUES (SEQ_IDAVIZINSOTIRE.NEXTVAL,DATE'2017-01-09', 1100, .19, 50005);
+ 
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Agocalmin','Analgezice', 'DA', 'A');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Paracetamol',NULL, 'NU', 'A');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Solutii magistrale',NULL, 'DA', 'P');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Brevoxyl',NULL, 'NU', 'A');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Fervex',NULL, 'NU', 'A');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Clor-butanol',NULL, 'DA', 'P');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'TeraFlu',NULL, 'DA', 'A');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Aspacardin',NULL, 'NU', 'A');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Prep1',NULL, 'NU', 'P');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Solx',NULL, 'NU', 'P');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Glocura',NULL, 'NU', 'P');
+INSERT INTO medicamente (IDMEDICAMENT,NumeMedicament, ObsMedicament, Prescris, tipMedicament) VALUES (SEQ_IDMEDICAMENTE.NEXTVAL,'Solfacetamina',NULL, 'DA', 'P');
+
+INSERT INTO medicamente_achiz(IDMEDACHIZ,UMMEDACHIZ,CONCENTRATIEMEDACHIZ,STOC,COMPOZITIEMEDACHIZ,DATAEXPIR,PRETMEDACHIZ) VALUES (7009, 'buc','20mg', 300, 'natrium phenyl methyl aminome-thansulfonicum', DATE'2017-01-01',5);
+INSERT INTO medicamente_achiz (IDMEDACHIZ,UMMEDACHIZ,CONCENTRATIEMEDACHIZ,STOC,COMPOZITIEMEDACHIZ,DATAEXPIR,PRETMEDACHIZ) VALUES (7002, 'buc','10mg', 350, 'comp', DATE'2017-01-01',1.3);
+INSERT INTO medicamente_achiz (IDMEDACHIZ,UMMEDACHIZ,CONCENTRATIEMEDACHIZ,STOC,COMPOZITIEMEDACHIZ,DATAEXPIR,PRETMEDACHIZ) VALUES (7004, 'flacon','40g', 360, 'sulfurosus zincatus', DATE'2017-01-30',23);
+INSERT INTO medicamente_achiz (IDMEDACHIZ,UMMEDACHIZ,CONCENTRATIEMEDACHIZ,STOC,COMPOZITIEMEDACHIZ,DATAEXPIR,PRETMEDACHIZ) VALUES (7007, 'pliculete','20g', 300, 'cloruros ciocolatus', DATE'2016-01-01',2.7);
+INSERT INTO medicamente_achiz (IDMEDACHIZ,UMMEDACHIZ,CONCENTRATIEMEDACHIZ,STOC,COMPOZITIEMEDACHIZ,DATAEXPIR,PRETMEDACHIZ) VALUES (7005, 'pliculete','20g', 300, 'acid acetil salicilic', DATE'2016-05-13',2.5);
+INSERT INTO medicamente_achiz (IDMEDACHIZ,UMMEDACHIZ,CONCENTRATIEMEDACHIZ,STOC,COMPOZITIEMEDACHIZ,DATAEXPIR,PRETMEDACHIZ) VALUES (7008, 'comprimate','2g', 1490, 'thansulfonicum', DATE'2016-01-21',0.5);
+
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Analgin', 'ml', NULL, 23);
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Diclogenac', 'g', NULL, 30);
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Neomicin', 'mg', NULL, 2.3);
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Ibuprofen', 'ml', NULL, 1.5);
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Efedrina', 'mg', NULL, 2);
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Vaselina', 'ml', NULL, 0.8);
+INSERT INTO substante (IDSUBSTANTA,DenSubstanta, UM, ObsSubstanta, Pret) VALUES (SEQ_IDSUBSTANTE.NEXTVAL,'Pioxicam', 'ml', NULL, 4);
+
+--INSERT INTO medicamente_preparate VALUES(7003, DATE'2012-01-14', DATE'2011-01-14', 12) ;
+--INSERT INTO medicamente_preparate VALUES(7006, DATE'2012-01-14', DATE'2011-01-14', 2) ;
+--INSERT INTO medicamente_preparate VALUES(7009, DATE'2013-01-14', DATE'2011-01-14', 120) ;
+--INSERT INTO medicamente_preparate VALUES(7010, DATE'2012-02-14', DATE'2011-01-14', 23) ;
+--INSERT INTO medicamente_preparate VALUES(7011, DATE'2012-01-14', DATE'2011-01-14', 152) ;
+--INSERT INTO medicamente_preparate VALUES(7012, DATE'2012-06-14', DATE'2011-01-14', 45) ;
+
+INSERT INTO medicamente_preparate (idMedPrep, dataExpir, dataFabr) VALUES(7003, DATE'2017-01-24', DATE'2016-01-14') ;
+INSERT INTO medicamente_preparate (idMedPrep, dataExpir, dataFabr) VALUES(7006, DATE'2017-01-21', DATE'2016-01-14') ;
+INSERT INTO medicamente_preparate (idMedPrep, dataExpir, dataFabr) VALUES(7009, DATE'2017-01-22', DATE'2016-01-14') ;
+INSERT INTO medicamente_preparate (idMedPrep, dataExpir, dataFabr) VALUES(7010, DATE'2017-02-23', DATE'2016-01-14') ;
+INSERT INTO medicamente_preparate (idMedPrep, dataExpir, dataFabr) VALUES(7011, DATE'2017-01-14', DATE'2016-01-14') ;
+INSERT INTO medicamente_preparate (idMedPrep, dataExpir, dataFabr) VALUES(7012, DATE'2017-06-14', DATE'2016-01-14') ;
+
+INSERT INTO preparat (Idpreparat, IdMedPrep, DenPreparat, UM, Concentratie, StocCurent) VALUES (SEQ_IDPreparat.NEXTVAL,7003, 'Solutii magistrale', 'ml', '50 mg/ml', 20) ;
+INSERT INTO preparat (Idpreparat,IdMedPrep, DenPreparat, UM, Concentratie, StocCurent) VALUES (SEQ_IDPreparat.NEXTVAL,7006, 'Clor-butanol', 'ml', '10 mg/ml', 340) ;
+INSERT INTO preparat (Idpreparat,IdMedPrep, DenPreparat, UM, Concentratie, StocCurent) VALUES (SEQ_IDPreparat.NEXTVAL,7009, 'Prep1', 'ml', '5 mg/ml', 200) ;
+INSERT INTO preparat (Idpreparat,IdMedPrep, DenPreparat, UM, Concentratie, StocCurent) VALUES (SEQ_IDPreparat.NEXTVAL,7010, 'Solx', 'ml', '50 mg/ml', 120) ;
+INSERT INTO preparat (Idpreparat,IdMedPrep, DenPreparat, UM, Concentratie, StocCurent) VALUES (SEQ_IDPreparat.NEXTVAL,7011, 'Glocura', 'ml', '0.4 mg/ml', 250) ;
+INSERT INTO preparat (Idpreparat,IdMedPrep, DenPreparat, UM, Concentratie, StocCurent) VALUES (SEQ_IDPreparat.NEXTVAL,7012, 'Solfacetamina', 'ml', '5 mg/ml', 320) ;
+ 
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35001, 89001, 100, 'g');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35001, 89002, 180, 'mg');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35003, 89002, 10, 'mg');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35007, 89003, 90, 'ml');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35002, 89005, 75, 'ml');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35005, 89005, 50, 'g');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35003, 89006, 23, 'g');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35001, 89006, 45, 'mg');
+INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35004, 89006, 10, 'mg');
+--INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35002, 89008, 29, 'ml');
+--INSERT INTO substanta_preparat(IDSUBSTANTA,IDPREPARAT,CANTITATENECESARA,UM) VALUES (35007, 89008, 150, 'g');
+ 
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7012, DATE'2016-01-01', DATE'2017-01-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7012, DATE'2015-08-01', DATE'2017-08-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7003, DATE'2015-12-01', DATE'2016-12-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7003, DATE'2015-01-01', DATE'2016-01-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7004, DATE'2015-12-12', DATE'2017-12-12');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7005, DATE'2015-01-01', DATE'2016-01-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7006, DATE'2015-01-01', DATE'2017-01-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7007, DATE'2015-01-01', DATE'2016-01-01');
+INSERT INTO lot (IDLOT,IdMedicament, DataFabricatie, DataExpirarii) VALUES (SEQ_IDLOT.NEXTVAL,7007, DATE'2015-01-01', DATE'2016-01-01');
+  
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100001, 1, 2000);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100001, 2, 3000);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100002, 3, 4500);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100002, 1, 5800);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100002, 4, 1000);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100002, 5, 500);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100003, 1, 800);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100003, 8, 900);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100004, 1, 600);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100004, 9, 300);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100005, 4, 7800);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100005, 5, 100);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100006, 1, 7800);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100007, 5, 2300);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100008, 7, 1880);
+INSERT INTO cantitate_lot(IDAVIZINSOTIRE,IDLOT,CANTITATERECEPTIONATA) VALUES (100008, 8, 2800);
+  
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7001, 60001, 2000, 1.4);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7002, 60001, 1500, 1);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7003, 60001, 1800, 50);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7001, 60002, 900, 12);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7008, 60003, 700, 1.9);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7003, 60004, 100, 5.5);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7004, 60004, 2300, 12);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7005, 60004, 8000, 4.5);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7006, 60004, 1000, 1.1);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7001, 60005, 400, 3.25);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7008, 60006, 100, 8);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7003, 60007, 2300, 12);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7004, 60007, 500, 9.4);
+INSERT INTO comanda_finala_medicament(IDMEDICAMENT,IDCOMANDAFINALA,CANTITATECOMANDATAFINALA,PRETUNITAR) VALUES (7001, 60008, 100, 7);
+
+INSERT INTO grupa_boala (IDGRUPABOALA,DenumireGrupa, Prioritate) VALUES (SEQ_IDGRUPABOALA.NEXTVAL,'Grupa A', 1);
+INSERT INTO grupa_boala (IDGRUPABOALA,DenumireGrupa, Prioritate) VALUES (SEQ_IDGRUPABOALA.NEXTVAL,'Grupa B', 1);
+INSERT INTO grupa_boala (IDGRUPABOALA,DenumireGrupa, Prioritate) VALUES (SEQ_IDGRUPABOALA.NEXTVAL,'Grupa C', 2);
+INSERT INTO grupa_boala (IDGRUPABOALA,DenumireGrupa, Prioritate) VALUES (SEQ_IDGRUPABOALA.NEXTVAL,'Grupa D', 3);
+INSERT INTO grupa_boala (IDGRUPABOALA,DenumireGrupa, Prioritate) VALUES (SEQ_IDGRUPABOALA.NEXTVAL,'Grupa E', 4);
+  
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Antrax', 1001);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Bruceloza', 1001);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Difterie', 1001);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Dizenterie', 1002);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Febra tifoida', 1002);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Gonoree', 1003);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Hepatita A', 1003);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Holera', 1003);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Parotidita Epidemica', 1004);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Oreion', 1004);
+INSERT INTO boala (IDBOALA,NumeBoala, IdGrupaBoala) VALUES (SEQ_IDBOALA.NEXTVAL,'Scabie', 1005);
+  
+INSERT INTO medic (IDMEDIC,Nume, Specializare, Adresa, Localitate, Telefon) VALUES (SEQ_IDMEDIC.NEXTVAL,'Mirela Ramona', 'Pediatrie', 'str.Florilor, nr.45', 'Roman', '0765444333');
+INSERT INTO medic (IDMEDIC,Nume, Specializare, Adresa, Localitate, Telefon) VALUES (SEQ_IDMEDIC.NEXTVAL,'Popescu Vasile', 'Dermatologie', 'str. Primaverii, nr.3', 'Barlad', '0234232323');
+INSERT INTO medic (IDMEDIC,Nume, Specializare, Adresa, Localitate, Telefon) VALUES (SEQ_IDMEDIC.NEXTVAL,'Darie Teofan', 'Oftalmologie', 'str.Sperantei', 'Iasi', '0232323232');
+INSERT INTO medic (IDMEDIC,Nume, Specializare, Adresa, Localitate, Telefon) VALUES (SEQ_IDMEDIC.NEXTVAL,'Schiopu Maria', 'Endocrinologie', 'str. Jiului, nr 5', 'Craiova', '0744332211');
+INSERT INTO medic (IDMEDIC,Nume, Specializare, Adresa, Localitate, Telefon) VALUES (SEQ_IDMEDIC.NEXTVAL,'Diaconu Costel', 'Ginecologie', 'str. Sarariei, nr.3', 'Iasi', '0232111555');
+INSERT INTO medic (IDMEDIC,Nume, Specializare, Adresa, Localitate, Telefon) VALUES (SEQ_IDMEDIC.NEXTVAL,'Andreea Sofia', 'Pediatrie', 'str. Universitatii, bl.3, ap 19', 'Vaslui', '0721221122');
+  
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Diclisian Florin', DATE '1980-10-10', '1801010232323', 'Iasi', 'Asigurat');
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Flutur Anca', DATE '1988-12-07', '5871924854759', 'Suceava', 'Asigurat');
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Gosu Diana', DATE '1976-12-10', '14785957745874', 'Deva', 'Neasigurat');
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Vizitiu Anca', DATE '1982-11-15', '25478547858741', 'Craiova', 'Neasigurat');
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Niculcea Claudia', DATE '1985-10-02', '21458748596357', 'Bucuresti', 'Asigurat');
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Maierean Adela', DATE '1982-11-12', '18574258655474', 'Botosani', 'Asigurat');
+INSERT INTO pacient (IDPACIENT,NumePrenume, DataNasterii, CNP, Judet, Statut) VALUES (SEQ_IDPACIENT.NEXTVAL,'Pintilie Alexandrina', DATE '1975-10-12', '28745858747452', 'Hunedoara', 'Asigurat');      
+
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 1, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 2, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 3, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 4, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 5, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 6, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('STEFAN', 7, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 1, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 2, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 3, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 4, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 5, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 6, 'D','D','D') ;
+INSERT INTO drepturi(UTILIZATOR,IDPACIENT,DREPT_INSERARE,DREPT_MODIFICARE,DREPT_STERGERE) VALUES ('MIRCEA', 7, 'D','D','D') ;
+
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Rabat', 'M');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Remiza', 'M');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Risturn', 'M');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere', 'M');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Disount', 'M');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere mica', 'M');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere mare', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere potrivita', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Discount partial', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Discount total', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere la lot', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere la pachet', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere la capsule', 'S');
+INSERT INTO reducere (IDREDUCERE,DenumireReducere, tipReducere) VALUES (SEQ_IDREDUCERE.NEXTVAL,'Reducere de vip ', 'S');
+
+
+INSERT INTO categorii_medicamente(IDCATEGMEDICAMENTE,PROCENT,OBSERVATII) VALUES (5001, .2, NULL);
+INSERT INTO categorii_medicamente(IDCATEGMEDICAMENTE,PROCENT,OBSERVATII) VALUES (5002, 45, NULL);
+INSERT INTO categorii_medicamente(IDCATEGMEDICAMENTE,PROCENT,OBSERVATII) VALUES (5003, 15.5, NULL);
+INSERT INTO categorii_medicamente(IDCATEGMEDICAMENTE,PROCENT,OBSERVATII) VALUES (5004, 20, NULL);
+INSERT INTO categorii_medicamente(IDCATEGMEDICAMENTE,PROCENT,OBSERVATII) VALUES (5005, 12, NULL);
+INSERT INTO categorii_medicamente(IDCATEGMEDICAMENTE,PROCENT,OBSERVATII) VALUES (5006, 60, NULL);
+  
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 35, NULL);
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 5, NULL);
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 45, NULL);
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 12, NULL);
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 20.5, NULL);
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 10, NULL);
+INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 5, NULL);
+--INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 2, NULL);
+--INSERT INTO categorii_socioprofesionale(IDCATEGSOCIOPROF,PROCENT,OBSERVATII) VALUES (SEQ_IDCATEGSOCIOPROF.NEXTVAL, 80, NULL);
+ 
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL, DATE'2016-08-01', DATE'2016-08-08', 2001, 10001, 5001, 1 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-09-15', DATE'2016-09-30', 2002, 10006, 5002,3 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-08-11', DATE'2016-08-11', 2002, 10004, 5004, 4 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-12-01', DATE'2016-12-20', 2003, 10007, 5004, 2 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-09-04', DATE'2016-09-08', 2004, 10005, 5015, 6 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-11-01', DATE'2016-11-08', 2007, 10001, 5003, 5 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-12-01', DATE'2016-12-02', 2008, 10001, 5001, 7 );
+INSERT INTO reteta (IDRETETA,DataEliberarii, DataIncheierii, IdBoala, IdMedic, IdReducere, IdPacient) VALUES (SEQ_IDRETETA.NEXTVAL,DATE'2016-08-05', DATE'2016-08-13', 2007, 10006, 5012, 4 );
+
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7001, 20001, 'tableta', 20, '1/zi');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7003, 20001, 'fiola', 5, '1/6ore');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7004, 20001, 'pilula', 15, '1/8ore');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7001, 20002, 'fiola', 16, '1/4ore');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7006, 20002, 'tableta', 15, ' 3/zi, dupa mesele principale');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7008, 20003, 'tableta', 20, '3/zi');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7012, 20003, 'tableta', 20, '2/zi');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7004, 20003, 'tableta', 20, '2/zi');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7005, 20004,'tableta', 20,'1/8ore');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7006, 20004, 'tableta', 20, '1/6ore');
+--INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7002, 20005, 'tableta', 30, '1/12ore');
+--INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7006, 20005, 'tableta', 12, '1/12ore');
+--INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7008,20005, 'tableta', 30,'1/8ore');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7001, 20006, 'tableta', 30, '3/zi');
+INSERT INTO medicamente_reteta (IdMedicament, IdReteta, UM, CantitatePrescrisa, Prescriptie) VALUES (7009, 20006, 'tableta', 30, '3/zi');
+
+INSERT INTO reducere_categ_medicamente (idmedicament, idcategMedicamente) VALUES (7001, 5006);
+INSERT INTO reducere_categ_medicamente (idmedicament, idcategMedicamente) VALUES (7002, 5001);
+INSERT INTO reducere_categ_medicamente (idmedicament, idcategMedicamente) VALUES (7003, 5002);
+INSERT INTO reducere_categ_medicamente (idmedicament, idcategMedicamente) VALUES (7004, 5003);
+INSERT INTO reducere_categ_medicamente (idmedicament, idcategMedicamente) VALUES (7005, 5004);
+INSERT INTO reducere_categ_medicamente (idmedicament, idcategMedicamente) VALUES (7006, 5005);
+
+INSERT INTO categ_fidelitate (IDCATEGFIDELITATE,denumire, procent) VALUES (SEQ_IDCATEGFIDELITATE.NEXTVAL,'intre 0-6 luni', 0.05) ;
+INSERT INTO categ_fidelitate (IDCATEGFIDELITATE,denumire, procent) VALUES (SEQ_IDCATEGFIDELITATE.NEXTVAL,'Client cu vechimea pana intr-un an', 0.1) ;
+INSERT INTO categ_fidelitate (IDCATEGFIDELITATE,denumire, procent) VALUES (SEQ_IDCATEGFIDELITATE.NEXTVAL,'Client cu vechimea intre 1-2 ani', 0.15) ;
+INSERT INTO categ_fidelitate (IDCATEGFIDELITATE,denumire, procent) VALUES (SEQ_IDCATEGFIDELITATE.NEXTVAL,'Client cu vechimea intre 2-3 ani', 0.25) ;
+INSERT INTO categ_fidelitate (IDCATEGFIDELITATE,denumire, procent) VALUES (SEQ_IDCATEGFIDELITATE.NEXTVAL,'Client cu vechimea peste 3 ani', 0.35) ;
+
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,1, 1000, DATE'2016-08-06', 56, DATE'2017-08-06');
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,2, 1001, DATE'2016-08-09', 50, DATE'2017-08-06');
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,3, 1002, DATE'2016-08-10', 67, DATE'2017-08-06');
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,4, 1003, DATE'2016-08-20', 40, DATE'2017-09-06');
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,5, 1004, DATE'2016-08-06', 70, DATE'2017-03-06');
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,6, 1000, DATE'2016-10-06', 39, DATE'2017-09-06');
+INSERT INTO card_fidelitate (IDCARDFIDELITATE,IdPacient, IdCategfidelitate, DataInreg, ValCump, DataExp) VALUES (SEQ_IDCARDFIDELITATE.NEXTVAL,7, 1003, DATE'2016-03-06', 20, DATE'2017-08-06');
+  
+INSERT INTO receptie_medicam_furniz(IDMEDICAMENT,IDFACTURA,CANTITRECEPTIONATA,PRET) VALUES ( 7001,19001, 500, 57000);
+INSERT INTO receptie_medicam_furniz(IDMEDICAMENT,IDFACTURA,CANTITRECEPTIONATA,PRET) VALUES (7002, 19004, 400, 49400);
+INSERT INTO receptie_medicam_furniz(IDMEDICAMENT,IDFACTURA,CANTITRECEPTIONATA,PRET) VALUES ( 7003, 19006, 800, 34000);
+INSERT INTO receptie_medicam_furniz(IDMEDICAMENT,IDFACTURA,CANTITRECEPTIONATA,PRET) VALUES (7004, 19003, 270, 25000);
+INSERT INTO receptie_medicam_furniz(IDMEDICAMENT,IDFACTURA,CANTITRECEPTIONATA,PRET) VALUES ( 7005, 19005, 220, 10000);
+INSERT INTO receptie_medicam_furniz(IDMEDICAMENT,IDFACTURA,CANTITRECEPTIONATA,PRET) VALUES ( 7007, 19002, 380, 29000);
+
+--INSERT INTO medicamente_prescrise VALUES (20003, 7011, 1, 'plic' );
+--INSERT INTO medicamente_prescrise VALUES (20001, 7001, 23, ' fiole')  ;
+--INSERT INTO medicamente_prescrise VALUES (20004, 7009, 5, ' folii')  ;
+--INSERT INTO medicamente_prescrise VALUES (20003, 7004, 30, 'comprimat')  ;
+--INSERT INTO medicamente_prescrise VALUES (20007, 7006, 23, ' comprimat')  ;
+--INSERT INTO medicamente_prescrise VALUES (20006, 7007, 15, ' fiole')  ;
+
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-11');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-02-11');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-12');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-02-12');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-09-12');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-14');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-11-13');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-12-10');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-11-13');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-12');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-05-10');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-06-07');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-04-03');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-03-04');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-01');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-02-21');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2017-01-22');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-03');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-02-25');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-04-19');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-05-28');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-07-22');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-22');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-11');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-11');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-05-14');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-04-16');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-17');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-03-18');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-03-11');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-10');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-02');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-02');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-05-26');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-03-28');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-22');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-10');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-08-21');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-20');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-03-18');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-05-10');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-01-29');
+INSERT INTO retur (IDRETURMEDICAMENT,dataretur) VALUES (SEQ_IDRETURMEDICAMENT.NEXTVAL,DATE'2016-12-02');
+
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (1, 50003, 1, 25, 'expirate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (2, 50004, 2, 90, 'nesolicitate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (3, 50006, 3, 25, 'nesolicitate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (43, 50006, 4, 60, 'nesolicitate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (5, 50007, 5, 20, 'expirate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (6, 50007, 6, 31, 'nesolicitate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (7, 50007, 7, 42, 'expirate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (1, 50008, 8, 23, 'expirate');
+INSERT INTO retur_lot (IDRETURMEDICAMENT,IDCOMANDAFARMACIE,IDLOT,CANTITATERETURNATA,MOTIVRETURNARE) VALUES (8, 50008, 9, 21, 'nesolicitate');
+
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-08-10', 1001);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2017-01-21', 1001);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-08-10', 1002);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-03-16', 1002);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-02-14', 1002);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-06-14', 1003);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-07-18', 1003);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-04-14', 1003);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-02-16', 1003);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-09-15', 1004);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-08-13', 1005);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-08-14', 1005);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-09-14', 1005);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-11-12', 1005);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-12-14', 1005);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-08-14', 1005);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-03-16', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-05-17', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-01-18', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2017-01-14', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-03-14', 1007);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-05-11', 1007);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-06-10', 1007);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-11-14', 1007);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-02-15', 1008);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2011-08-15', 1002);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-03-15', 1002);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-05-14', 1004);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-02-14', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-02-24', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-03-12', 1006);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-05-14', 1008);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-06-01', 1008);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-11-20', 1001);
+INSERT INTO bon_casa (IDBONCASA,Databon, IdFarmacie) VALUES (SEQ_IDBONCASA.NEXTVAL,DATE'2016-02-11', 1003);
+
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (101, 101, 7001, 120);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (102, 102, 7004, 140);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (111, 103, 7003, 25);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (121, 104, 7003, 10);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (116, 105, 7004, 15);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (130, 106, 7002, 14);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (128, 107, 7001, 60);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (131, 101, 7008, 24);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (103, 102, 7010, 80);
+--INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (103, 103, 7009, 10);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (105, 104, 7006, 27);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (107, 101, 7002, 12);
+--INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (116, 103, 7001, 16);
+INSERT INTO medicament_bon (idboncasa, idcardFidelitate, idmedicament, cantitvanduta) VALUES (127, 104, 7001, 18);
+
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7001, 50001, 500, 3030000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7002, 50002, 580, 3010000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7001, 50003, 1500, 206000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7006, 50004, 2600, 100000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7010, 50005, 1000, 430000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7011, 50006, 2300, 500000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7011, 50007, 800, 80000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7003, 50008, 300, 27000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7003, 50009, 90, 323000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7003, 50010, 200, 90000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7004, 50011, 570, 308000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7009, 50001, 510, 300000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7001, 50002, 100, 330300);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7003, 50003, 450, 306000);
+INSERT INTO medicament_farmacie_comanda(IDMEDICAMENT,IDCOMANDAFARMACIE,CANTITCOMANDAFARMACIE,PRETCOMANDAFARMACIE) VALUES (7010, 50001, 800, 3703000);
+
+INSERT INTO bon_reteta (idboncasa, idreteta) VALUES (101, 20001);
+INSERT INTO bon_reteta (idboncasa, idreteta) VALUES (102, 20003);
+INSERT INTO bon_reteta (idboncasa, idreteta) VALUES (103, 20002);
+INSERT INTO bon_reteta (idboncasa, idreteta) VALUES (104, 20004);
+--INSERT INTO bon_reteta (idboncasa, idreteta) VALUES (105, 20005);
+
+
+CREATE OR REPLACE PACKAGE pachet_proiectBD AS
+
+  TYPE t_ref_bonCasa IS REF CURSOR ;
+  PROCEDURE p_PretMedPrep (CantitateNecesara_ substanta_preparat.CantitateNecesara%TYPE, PretSubstanta_ substante.Pret%TYPE, idpreparat_ substanta_preparat.idpreparat%TYPE);
+  PROCEDURE p_PretMedicament (idmedicament_ medicament_bon.idmedicament%TYPE, CantitVanduta_ medicament_bon.cantitVanduta%TYPE, PretUnitar_ IN OUT medicament_bon.pretUnitar%TYPE);
+  FUNCTION f_BonCasaFiltrat(data_initiala DATE, data_finala DATE) RETURN t_ref_bonCasa ;
+  
+END ;
+----------------------------------------declar variabile pt pachetul proiectBD
+
+
+
+CREATE OR REPLACE PACKAGE pachet_drepturi AS
+	
+	FUNCTION f_are_drepturi (user_ VARCHAR2, idpacient_ pacient.idpacient%TYPE, tip_editare CHAR) RETURN BOOLEAN ;
+
+END pachet_drepturi ;
+
+-----------------------------------------------
+CREATE OR REPLACE PACKAGE BODY pachet_drepturi IS
+FUNCTION f_are_drepturi (user_ VARCHAR2, idpacient_ pacient.idpacient%TYPE, tip_editare CHAR ) 
+	RETURN BOOLEAN 
+IS
+	v_sir CHAR(1) ; 
+BEGIN
+	CASE 
+	  WHEN tip_editare = 'I' THEN 	
+  		SELECT drept_inserare INTO v_sir FROM drepturi
+    		WHERE utilizator = user_ AND idpacient=idpacient_ ;
+	  WHEN tip_editare = 'U' THEN 	
+      SELECT drept_modificare INTO v_sir FROM drepturi
+        WHERE utilizator = user_ AND idpacient=idpacient_ ;
+	  WHEN tip_editare = 'D' THEN 	
+  		SELECT drept_stergere INTO v_sir FROM drepturi
+    		WHERE utilizator = user_ AND idpacient=idpacient_ ;
+	END CASE ;
+	RETURN CASE v_sir WHEN 'D' THEN TRUE ELSE FALSE END ;
+EXCEPTION
+	WHEN NO_DATA_FOUND THEN 
+	RETURN FALSE ;
+END ;
+
+--------------------------------------------------------------------------
+END pachet_drepturi ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------
+
+CREATE OR REPLACE PACKAGE BODY pachet_proiectBD AS
+-----------------------------
+PROCEDURE p_PretMedPrep (CantitateNecesara_ substanta_preparat.CantitateNecesara%TYPE, PretSubstanta_ substante.Pret%TYPE, idpreparat_ substanta_preparat.idpreparat%TYPE)
+AS
+  v_idMedPrep medicamente_preparate.idMedPrep%TYPE;
+BEGIN
+  select distinct mp.idMedPrep into v_idMedPrep from medicamente_preparate mp
+    inner join preparat p on mp.idmedprep=p.idmedprep
+    where p.idpreparat= idpreparat_ and p.idMedPrep=mp.idmedprep;
+  UPDATE medicamente_preparate SET PretMedPrep = coalesce(pretMedPrep,0) + coalesce(cantitateNecesara_ * pretSubstanta_, 0)
+    WHERE idmedprep = v_idMedPrep ;
+END ;
+
+-----------------------------
+
+PROCEDURE p_pretMedicament (idmedicament_ medicament_bon.idmedicament%TYPE, CantitVanduta_ medicament_bon.cantitVanduta%TYPE, PretUnitar_ IN OUT medicament_bon.pretUnitar%TYPE)
+AS
+  v_exista NUMBER(1) ;
+  v_stoc medicamente_achiz.stoc%TYPE;
+  v_numeMedicament medicamente.numeMedicament%TYPE;
+  v_pret medicamente_achiz.PretMedAchiz%TYPE;
+  v_tipmedicament medicamente.tipMedicament%TYPE;
+BEGIN
+  select count(*) into v_exista from medicamente where idmedicament= idmedicament_;
+  select tipmedicament into v_tipmedicament from medicamente where idmedicament= idmedicament_;
+  if v_exista = 0 then
+    RAISE_APPLICATION_ERROR (-20520, 'Nu achizitionam medicamentul solicitat.');  
+  else
+    if v_tipmedicament = 'A' then
+      select stoc into v_stoc from medicamente_achiz where idmedachiz= idmedicament_;
+      select numeMedicament into v_numeMedicament from medicamente where idmedicament= idmedicament_;
+      case
+        when v_stoc > 0 and v_stoc < cantitVanduta_ then
+          RAISE_APPLICATION_ERROR (-20520, 'Stocul pentru medicamentul ' || v_numeMedicament || ' este de numai ' || v_stoc || '. ' ||
+                                           'Ati solicitat cantitatea de ' || cantitVanduta_ || '. ' ||
+                                           'Nu va putem onora cererea pentru medicamentul ' || v_numeMedicament);
+        when v_stoc = 0 then
+          RAISE_APPLICATION_ERROR (-20520, 'Nu mai avem medicamentul ' || v_numeMedicament || ' in stoc.');
+        when v_stoc >= cantitVanduta_ then
+          select PretMedAchiz into v_pret from medicamente_achiz where idMedAchiz= idmedicament_;
+          pretUnitar_ := coalesce(v_pret,0);
+          UPDATE medicamente_achiz SET stoc = stoc - CantitVanduta_ where idMedAchiz= idmedicament_;
+      end case;
+    else -- v_tipmedicament = 'P'
+      select p.denpreparat into v_numeMedicament from medicamente_preparate mp
+        inner join preparat p on mp.idmedprep=p.idmedprep
+        where mp.idmedprep= idmedicament_;
+      select p.stoccurent into v_stoc from medicamente_preparate mp
+        inner join preparat p on mp.idmedprep=p.idmedprep
+        where mp.idmedprep= idmedicament_;
+      case
+        when v_stoc > 0 and v_stoc < cantitVanduta_ then
+          RAISE_APPLICATION_ERROR (-20520, 'Stocul pentru medicamentul ' || v_numeMedicament || ' este de numai ' || v_stoc || '. ' ||
+                                           'Ati solicitat cantitatea de ' || cantitVanduta_ || '. ' ||
+                                           ' Nu va putem onora cererea pentru medicamentul ' || v_numeMedicament);
+        when v_stoc = 0 then
+          RAISE_APPLICATION_ERROR (-20520, 'Nu mai avem medicamentul ' || v_numeMedicament || ' in stoc.');
+        when v_stoc >= cantitVanduta_ then
+          select PretMedPrep into v_pret from medicamente_preparate where idMedPrep= idmedicament_;
+          pretUnitar_ := coalesce(v_pret,0);
+          UPDATE preparat SET stoccurent = stocCurent - CantitVanduta_ where idMedPrep= idmedicament_;
+      end case;    
+    end if; -- de la v_tipmedicament = 'A'
+  end if; -- de la v_exista = 0
+END;
+-----------------------------
+
+FUNCTION f_BonCasaFiltrat(data_initiala DATE, data_finala DATE) RETURN t_ref_bonCasa
+AS
+  set_of_bonCasa t_ref_bonCasa;
+BEGIN 
+  OPEN set_of_bonCasa FOR SELECT * FROM bon_casa WHERE dataBon BETWEEN data_initiala AND data_finala ;
+  RETURN set_of_bonCasa;
+END;
+
+-----------------------------
+
+END; -- sfirsit pachet
+
+
+
+
+
+
+
+
+
+--=====================================================================================
+-- pachetul pachet_inchideri
+CREATE OR REPLACE PACKAGE pachet_inchid IS
+	v_ultima_zi_interzisa DATE := NULL ;
+	PROCEDURE p_inchid ;
+END pachet_inchid;
+
+-----------------------------------------------
+CREATE OR REPLACE PACKAGE BODY pachet_inchid IS
+-----------------------------------------------
+PROCEDURE p_inchid
+IS
+BEGIN 
+	SELECT LAST_DAY(TO_DATE('01/'||luna||'/'||an, 'dd/mm/yyyy'))
+	INTO  v_ultima_zi_interzisa
+	FROM INCHIDERI
+	WHERE TO_DATE('01/'||luna||'/'||an, 'dd/mm/yyyy') = 
+		(SELECT MAX(TO_DATE('01/'||luna||'/'||an, 'dd/mm/yyyy'))
+		 FROM INCHIDERI ) ;
+EXCEPTION
+	WHEN NO_DATA_FOUND THEN
+		v_ultima_zi_interzisa := DATE'2016-01-01' ;
+END p_inchid ;
+--------------------------------------------------------------------------
+END pachet_inchid ;
+
+
+CREATE OR REPLACE TRIGGER TrgReturMedicamentInsBefoRow
+BEFORE INSERT ON retur
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_idReturMedicament.NEXTVAL INTO :NEW.idReturMedicament FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgCardFidelitateInsBefoRow
+BEFORE INSERT ON card_fidelitate
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_idCardFidelitate.NEXTVAL INTO :NEW.idCardFidelitate FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgCategFidelitateInsBefoRow
+BEFORE INSERT ON categ_fidelitate
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_idCategFidelitate.NEXTVAL INTO :NEW.idCategFidelitate FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgPacientInsBefoRow
+BEFORE INSERT ON pacient
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_idPacient.NEXTVAL INTO :NEW.idpacient FROM dual ;
+END ;
+
+-------------------------------------------------
+
+CREATE OR REPLACE TRIGGER TrgCategSocioProfInsBefoRow
+BEFORE INSERT ON categorii_socioprofesionale
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_idCategSocioProf.NEXTVAL INTO :NEW.idCategSocioProf FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgCategMedicamenteInsBefoRow
+BEFORE INSERT ON categorii_medicamente
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdCategMedicamente.NEXTVAL INTO :NEW.IdCategMedicamente FROM dual ;
+END ;
+
+-------------------------------------------------
+
+CREATE OR REPLACE TRIGGER TrgReducereInsBefoRow
+BEFORE INSERT ON reducere
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_Idreducere.NEXTVAL INTO :NEW.Idreducere FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgMedicInsBefoRow
+BEFORE INSERT ON medic
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdMedic.NEXTVAL INTO :NEW.IdMedic FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgBoalaInsBefoRow
+BEFORE INSERT ON boala
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdBoala.NEXTVAL INTO :NEW.IdBoala FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgGrupaBoalaInsBefoRow
+BEFORE INSERT ON grupa_boala
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdGrupaBoala.NEXTVAL INTO :NEW.IdGrupaBoala FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgLotInsBefoRow
+BEFORE INSERT ON lot
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdLot.NEXTVAL INTO :NEW.IdLot FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgPreparatInsBefoRow
+BEFORE INSERT ON preparat
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdPreparat.NEXTVAL INTO :NEW.IdPreparat FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgSubstanteInsBefoRow
+BEFORE INSERT ON substante
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdSubstante.NEXTVAL INTO :NEW.IdSubstanta FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgMedicamenteInsBefoRow
+BEFORE INSERT ON medicamente
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdMedicamente.NEXTVAL INTO :NEW.IdMedicament FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgAvizInsotireInsBefoRow
+BEFORE INSERT ON aviz_insotire
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdAvizInsotire.NEXTVAL INTO :NEW.IdAvizInsotire FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgAchitareInsBefoRow
+BEFORE INSERT ON achitare
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdAchitareF.NEXTVAL INTO :NEW.IdAchitareF FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgFacturaInsBefoRow
+BEFORE INSERT ON facturi
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdFactura.NEXTVAL INTO :NEW.IdFactura FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgComandaFinalaInsBefoRow
+BEFORE INSERT ON comenzi_finale
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdComandaFinala.NEXTVAL INTO :NEW.IdComandaFinala FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgComandaFarmacieInsBefoRow
+BEFORE INSERT ON comenzi_farmacie
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdComandaFarmacie.NEXTVAL INTO :NEW.IdComandaFarmacie FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgFurnizorInsBefoRow
+BEFORE INSERT ON furnizori
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdFurnizor.NEXTVAL INTO :NEW.IdFurnizor FROM dual ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgFarmacieInsBefoRow
+BEFORE INSERT ON farmacii
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+  SELECT seq_IdFarmacie.NEXTVAL INTO :NEW.IdFarmacie FROM dual ;
+END ;
+
+-------------------------------------------------
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgBonCasaInsBefoRow
+BEFORE INSERT ON bon_casa
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+	IF :NEW.databon <= pachet_inchid.v_ultima_zi_interzisa THEN 
+		RAISE_APPLICATION_ERROR(-20560, 'Luna inchisa !') ;
+	END IF ;
+	IF :NEW.databon > ADD_MONTHS (pachet_inchid.v_ultima_zi_interzisa, 14) THEN 
+		RAISE_APPLICATION_ERROR(-20561, 'Nu puteti insera bonul de casa pina nu inchideti 14 luni anterioare! :D') ;
+	END IF ;
+  SELECT seq_idboncasa.NEXTVAL INTO :NEW.idboncasa FROM dual ;
+-- adaug in jurnal
+  INSERT INTO jurnal (tabela, tip_actualizare, vechea_inegistrare, noua_inregistrare) 
+		VALUES ('BON_CASA', 'I', NULL, 'idBonCasa:'|| :NEW.idbonCasa ||', DataBon:'|| 
+      			TO_CHAR(:NEW.DataBon, 'DD-MM-YYYY HH24:MI:SS') ||
+            ', SumaReducere:'|| :NEW.SumaReducere || ', SumaTotala:'|| :NEW.SumaTotala );
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgBonCasaUpd
+AFTER UPDATE ON bon_casa
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+-- adaug in jurnal 
+	INSERT INTO jurnal (tabela, tip_actualizare, vechea_inegistrare, noua_inregistrare) 
+		VALUES ('BON_CASA', 'I',
+            'idBonCasa:'|| :OLD.idbonCasa ||', DataBon:'|| 
+      			TO_CHAR(:OLD.DataBon, 'DD-MM-YYYY HH24:MI:SS') ||
+            ', SumaReducere:'|| :OLD.SumaReducere || ', SumaTotala:'|| :OLD.SumaTotala,
+            'idBonCasa:'|| :NEW.idbonCasa ||', DataBon:'|| 
+      			TO_CHAR(:NEW.DataBon, 'DD-MM-YYYY HH24:MI:SS') ||
+            ', SumaReducere:'|| :NEW.SumaReducere || ', SumaTotala:'|| :NEW.SumaTotala );
+END ;
+
+-------------------------------------------------
+
+
+CREATE OR REPLACE TRIGGER TrgRetetaInsBefoRow
+BEFORE INSERT ON reteta
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+  v_idGrupaBoala grupa_boala.idgrupaboala%TYPE;
+  v_procent categorii_socioProfesionale.procent%TYPE;
+  v_tipreducere reducere.tipReducere%TYPE;
+  v_numeprenume pacient.numeprenume%TYPE;
+BEGIN
+	-- verific daca USER-ul are voie sa preia retete pentru pacientul :NEW.idpacient
+	IF pachet_drepturi.f_are_drepturi (USER, :NEW.idpacient, 'I') THEN
+      -- ca sa nu primeasca valori initiale accidentale
+      :NEW.validare := 'N' ;
+      SELECT seq_idReteta.NEXTVAL INTO :NEW.idReteta FROM dual ;
+      select tipReducere into v_tipreducere from reducere where idreducere = :NEW.idreducere;
+      if v_tipreducere = 'S' then
+          select gb.idgrupaBoala into v_idGrupaBoala from grupa_boala gb
+            inner join boala b on gb.idgrupaBoala = b.idgrupaBoala
+            where b.idboala = :NEW.idboala;
+          select procent into v_procent from reducere r
+            inner join categorii_socioProfesionale csp on r.idreducere = csp.idCategSocioProf
+            where idreducere = :NEW.idreducere;
+          INSERT INTO reducere_procent (idgrupaboala, idpacient, idreducere, procentReducere)
+            VALUES (v_idGrupaBoala, :NEW.idpacient, :NEW.idreducere, v_procent);
+      end if;
+	ELSE
+    select numeprenume into v_numeprenume from pacient where idpacient = :NEW.idpacient;
+		RAISE_APPLICATION_ERROR (-20572, ' Utilizatorul ' || user || ' nu are dreptul sa insereze retete pentru pacientul ' || v_numeprenume);
+	END IF ;
+END ;
+
+-------------------------------------------------
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgMedicamenteRetetaInsBefoRow
+BEFORE INSERT ON medicamente_reteta
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+  v_exista NUMBER(1) ;
+  v_pretRedus reducere_categ_medicamente.pretRedus%TYPE;
+  v_procentReducere reducere_procent.procentReducere%TYPE;
+  v_validare CHAR(1);
+BEGIN
+  -- verific daca reteta nu e validata. Daca da, nu pot insera in medicamente_reteta.
+  select validare into v_validare from reteta where idreteta= :NEW.idreteta;
+  if v_validare = 'D' THEN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti insera medicamente in reteta pentru ca reteta este validata.' ) ;
+  else
+    -- calculez Medicamente_Reteta.SumaMedicament
+    -- actualizez MedicamenteAchiz.Stoc sau Preparat.StocCurent
+      pachet_proiectBD.p_PretMedicament(:NEW.idmedicament, :NEW.CantitatePrescrisa, :NEW.SumaMedicament);
+    -- calculez Medicamente_Reteta.SumaReducere
+      select count(*) into v_exista from reducere red
+        inner join categorii_medicamente cm on red.idreducere=cm.idcategmedicamente
+        inner join reducere_categ_medicamente rcm on cm.idcategMedicamente=rcm.idcategMedicamente
+        inner join reteta r on red.idreducere=r.idreducere
+        where rcm.idmedicament = :NEW.idmedicament;
+      if v_exista>0 then
+        select distinct pretRedus into v_pretRedus from reducere red
+          inner join categorii_medicamente cm on red.idreducere=cm.idcategmedicamente
+          inner join reducere_categ_medicamente rcm on cm.idcategMedicamente=rcm.idcategMedicamente
+          inner join reteta r on red.idreducere=r.idreducere
+          where rcm.idmedicament = :NEW.idmedicament;
+      else
+        v_pretRedus := 0;
+      end if;
+      select count(*) into v_exista from reducere red
+        inner join reducere_procent rp on red.idreducere = rp.idreducere
+        inner join reteta r on red.idreducere = r.idreducere
+        inner join boala b on r.idboala = b.idboala
+        inner join grupa_boala gb on gb.idgrupaBoala = b.idgrupaboala
+        where r.idreteta = :NEW.idreteta;
+      if v_exista > 0 then
+        select distinct procentReducere into v_procentReducere from reducere red
+          inner join reducere_procent rp on red.idreducere = rp.idreducere
+          inner join reteta r on red.idreducere = r.idreducere
+          inner join boala b on r.idboala = b.idboala
+          inner join grupa_boala gb on gb.idgrupaBoala = b.idgrupaboala
+          where r.idreteta = :NEW.idreteta;
+      else
+        v_procentReducere := 0;
+      end if;
+      :NEW.SumaReducere := :NEW.sumaMedicament - round((:NEW.sumaMedicament - v_pretRedus) * (100 - v_procentReducere)/100, 2);
+  end if;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgRedCategMedInsBefoRow
+BEFORE INSERT ON Reducere_categ_medicamente
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+  v_procent categorii_medicamente.procent%TYPE;
+  v_pret medicamente_achiz.pretMedAchiz%TYPE;
+  v_pretredus reducere_categ_medicamente.pretRedus%TYPE;
+  v_tip medicamente.tipMedicament%TYPE;
+BEGIN
+  select procent into v_procent from categorii_medicamente where idCategMedicamente =:NEW.idCategMedicamente;
+  select tipMedicament into v_tip from medicamente where idmedicament = :NEW.idmedicament;
+  case
+    when v_tip = 'A' then
+      select pretMedAchiz into v_pret from medicamente_achiz where idmedachiz = :NEW.idmedicament;
+    when v_tip = 'P' then
+      select pretMedPrep into v_pret from medicamente_preparate where idmedprep = :NEW.idmedicament;
+  end case;
+  :NEW.pretRedus := round(v_pret * v_procent/100, 2);  
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgSubstantaPreparatInsBefoRow
+BEFORE INSERT ON substanta_preparat
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+  v_pretSubstanta substante.pret%TYPE;
+BEGIN
+  select coalesce(pret, 0) into v_pretSubstanta from substante where idsubstanta= :NEW.idsubstanta;
+  pachet_proiectBD.p_PretMedPrep(:NEW.CantitateNecesara, v_pretsubstanta, :NEW.idpreparat);
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgBonRetetaInsBefoRow
+BEFORE INSERT ON bon_reteta
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+  v_sumaMedicament bon_reteta.suma%TYPE;
+  v_sumaReducere bon_reteta.sumaReducere%TYPE;
+BEGIN
+  select sum(sumamedicament) into v_sumaMedicament from medicamente_reteta where idreteta = :NEW.idreteta;
+  select sum(sumaReducere) into v_sumaReducere from medicamente_reteta where idreteta = :NEW.idreteta;
+  :NEW.suma := v_sumaMedicament;
+  :NEW.sumaReducere := v_sumaReducere;
+  update bon_casa set sumaReducere = coalesce(sumaReducere, 0) + :NEW.sumaReducere where idboncasa = :NEW.idboncasa;
+  update bon_casa set sumaTotala = coalesce(sumaTotala, 0) + (:NEW.suma - :NEW.sumaReducere) where idboncasa = :NEW.idboncasa;
+END;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER TrgMedicamentBonInsBefoRow
+BEFORE INSERT ON medicament_bon
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+DECLARE
+  v_suma bon_card_fidelitate.suma%TYPE;
+  v_sumaReducere bon_card_fidelitate.sumaReducere%TYPE;
+  v_sumaTotala bon_casa.sumaTotala%TYPE;
+  v_procent categ_fidelitate.procent%TYPE;
+  v_existaBon NUMBER(5);
+  v_existaProcent NUMBER(2);
+BEGIN
+  pachet_proiectBD.p_PretMedicament(:NEW.idmedicament, :NEW.CantitVanduta, :NEW.PretUnitar);
+  v_suma := :NEW.cantitVanduta * :NEW.pretUnitar;
+  select count(*) into v_existaProcent from categ_fidelitate cat
+    inner join card_fidelitate cf on cat.idcategFidelitate=cf.idcategFidelitate
+    where idcardFidelitate = :NEW.idcardFidelitate;
+  if v_existaProcent > 0 then
+    select distinct procent into v_procent from card_fidelitate cf
+     inner join categ_fidelitate cat on cat.idcategFidelitate=cf.idcategFidelitate
+     where cf.idcardFidelitate = :NEW.idcardFidelitate;
+ else
+    v_procent := 0;
+ end if;
+  v_sumaReducere := round(v_suma *  v_procent, 2);
+  select count(*) into v_existabon from bon_card_fidelitate where idbonCasa= :NEW.idbonCasa;
+  if v_existaBon = 0 then
+    insert into bon_card_fidelitate values (:NEW.idbonCasa, :NEW.idcardFidelitate, v_suma, v_sumaReducere);
+  else
+    update bon_card_fidelitate set suma = coalesce(suma, 0) + v_suma where idbonCasa= :NEW.idbonCasa;
+    update bon_card_fidelitate set sumaReducere = coalesce(sumaReducere, 0) + v_sumaReducere where idbonCasa= :NEW.idbonCasa;
+  end if;
+  update bon_casa set sumaReducere = coalesce(sumaReducere, 0) + v_sumaReducere where idbonCasa= :NEW.idbonCasa;
+  update bon_casa set sumaTotala = coalesce(sumaTotala, 0) + (v_suma - v_sumaReducere) where idbonCasa= :NEW.idbonCasa;
+END;
+
+-------------------------------------------------
+-- triggere pt. interzicerea accesului la modificarea campurilor calculate
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trgReducereProcUpd 
+    BEFORE UPDATE ON reducere_procent FOR EACH ROW
+BEGIN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti modifica datele in tabela REDUCERE_PROCENT! Acestea se actualizeaza automat.' ) ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trgMedicamenteRetetaUpd 
+    BEFORE UPDATE OF sumaMedicament, sumaReducere ON medicamente_reteta FOR EACH ROW
+BEGIN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti modifica atributele SumaMedicament si SumaReducere din tabela MEDICAMENTE-RETETA! Acestea se actualizeaza automat.' ) ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trgMedicamentBonUpd 
+    BEFORE UPDATE OF pretUnitar ON medicament_bon FOR EACH ROW
+BEGIN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti modifica atributul PretUnitar din tabela MEDICAMENT-BON! Acestea se actualizeaza automat.' ) ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trgBonRetetaUpd 
+    BEFORE UPDATE OF suma, sumaReducere ON bon_reteta FOR EACH ROW
+BEGIN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti modifica atributele Suma si SumaReducere din tabela BON-RETETA! Acestea se actualizeaza automat.' ) ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trgBonCardFidUpd 
+    BEFORE UPDATE OF suma, sumaReducere ON bon_card_fidelitate FOR EACH ROW
+BEGIN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti modifica atributele Suma si SumaReducere din tabela BON-ARD-FIDELITATE! Acestea se actualizeaza automat.' ) ;
+END ;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trgRedCatMedUpd 
+    BEFORE UPDATE OF pretRedus ON reducere_categ_medicamente FOR EACH ROW
+BEGIN
+    RAISE_APPLICATION_ERROR (-20491, 'NU puteti modifica atributul PretRedus din tabela REDUCERE_CATEG_MEDICAMENTE! Acestea se actualizeaza automat.' ) ;
+END ;
+
+-------------------------------------------------
+-------------------------------------------------
+-- trigger de interzicere a modificarii valorilor atributelor care se adauga in Reteta cu INSERT pentru retetele validate
+CREATE OR REPLACE TRIGGER trgReteteValidareUpdBr 
+    BEFORE UPDATE OF idpacient, idboala, idmedic, idreducere, dataEliberarii, dataIncheierii
+      ON reteta FOR EACH ROW
+BEGIN
+	IF :OLD.Validare = 'D' THEN
+    RAISE_APPLICATION_ERROR (-20491, 'Reteta este validata. NU puteti modifica datele!' ) ;
+  END IF ;
+END ;
+
+-------------------------------------------------
+-- triggere pt inchidere
+-------------------------------------------------
+-- de inserare
+CREATE OR REPLACE TRIGGER trg_inchideri_ins_br
+	BEFORE INSERT ON inchideri FOR EACH ROW
+BEGIN 
+	:NEW.operator := USER ;
+	:NEW.datainchiderii := CURRENT_DATE ;
+	IF pachet_inchid.v_ultima_zi_interzisa = DATE'2016-01-01' THEN
+		null ; -- e prima luna pentru care se face inchiderea
+	ELSE 
+		IF ADD_MONTHS (pachet_inchid.v_ultima_zi_interzisa, 1) <> 
+			LAST_DAY(TO_DATE('01/'||:NEW.luna||'/'||:NEW.an, 'dd/mm/yyyy')) THEN
+	    		RAISE_APPLICATION_ERROR(-20556, 'Lunile trebuie inchise consecutiv !') ;
+		END IF ;
+	END IF;
+	pachet_inchid.v_ultima_zi_interzisa := LAST_DAY(TO_DATE('01/'||:NEW.luna||'/'||:NEW.an, 'dd/mm/yyyy')) ;		
+END ;
+
+-----------------------------------------------
+-- de modificare - interzicere
+CREATE OR REPLACE TRIGGER trg_inchideri_upd_br
+	BEFORE UPDATE ON inchideri FOR EACH ROW
+BEGIN 
+	RAISE_APPLICATION_ERROR(-20557, 'In tabela INCHIDERI pot fi facute doar inserari si stergeri !')  ;
+END ;
+
+-----------------------------------------------
+-- de stergere
+CREATE OR REPLACE TRIGGER trg_inchideri_del_br
+	BEFORE DELETE ON inchideri FOR EACH ROW
+BEGIN 
+	IF pachet_inchid.v_ultima_zi_interzisa <> 
+		LAST_DAY(TO_DATE('01/'||:OLD.luna||'/'||:OLD.an, 'dd/mm/yyyy')) THEN
+    		RAISE_APPLICATION_ERROR(-20558, 'Nu puteti sterge decit ultima luna inchisa !') ;	
+	END IF;
+END ;
+
+-------------------------------------------------
+-- declansatoarele tabelei Jurnal - se interzic modificarea si stergerea
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trg_jurnal_ins_br
+	BEFORE INSERT ON jurnal FOR EACH ROW
+BEGIN
+	SELECT seq_idactualizare.NextVal INTO :NEW.IdActualizare FROM dual ;
+	:NEW.dataora := CURRENT_TIMESTAMP ;
+	:NEW.operator := USER ;
+END;
+
+-------------------------------------------------
+CREATE OR REPLACE TRIGGER trg_jurnal_upd_del_br
+	BEFORE UPDATE OR DELETE ON jurnal FOR EACH ROW
+BEGIN 
+	RAISE_APPLICATION_ERROR(-20657, 'In tabela JURNAL pot fi facute doar inserari !')  ;
+END ;
+
+-------------------------------------------------

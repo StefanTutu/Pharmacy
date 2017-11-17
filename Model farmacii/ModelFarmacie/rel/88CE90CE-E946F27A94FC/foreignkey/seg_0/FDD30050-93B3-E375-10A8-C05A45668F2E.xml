@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FDD30050-93B3-E375-10A8-C05A45668F2E" containerWithKeyObject="4D91AA8A-9953-3082-B31B-898F32DA6637" localFKIndex="96A32A77-C8FD-B56A-827E-274EAE2AEDA8" name="Boli_GrupDeBoli_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>9F81CA22-16A8-3E40-BA51-1A433BA863C7</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>14BCD8DA-0007-C5D5-7573-3C81C3166A1B</referredTableID>
+<keyObject>CEC91762-579E-6C99-2B92-C4ACA817EBE2</keyObject>
+<referredKeyID>CEC91762-579E-6C99-2B92-C4ACA817EBE2</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

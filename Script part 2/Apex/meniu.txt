@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<style>
+body{
+    font-family:"Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top:0;
+    left: 0;
+    background-color: #111;
+    overflow-x:hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color:#f1f1f1;
+}
+
+.sidenav . closebtn{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px){
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size:18px;}
+}
+</style>
+<body>
+<div id="mySidenav" class="sidenav">
+    <a href ="f?p=&APP_ID.:35:&SESSION."> Farmacie </a>
+    <a href ="f?p=&APP_ID.:17:&SESSION."> Medici Raport </a>
+    <a href ="f?p=&APP_ID.:39:&SESSION."> Medici Form </a>
+    <a href ="f?p=&APP_ID.:22:&SESSION."> Clienti </a>
+    <a href ="f?p=&APP_ID.:23:&SESSION."> Clienti - pacienti </a>
+    <a href ="f?p=&APP_ID.:26:&SESSION."> Boli </a>
+    <a href ="f?p=&APP_ID.:27:&SESSION."> Boli-Detalii </a>
+    <a href ="f?p=&APP_ID.:28:&SESSION."> Jurnal  </a>
+    <a href ="f?p=&APP_ID.:29:&SESSION."> Data inchidere jurnal </a>
+    <a href ="f?p=&APP_ID.:30:&SESSION."> Furnizori Raport </a>
+    <a href ="f?p=&APP_ID.:40:&SESSION."> Furnizori Form </a>
+    <a href ="f?p=&APP_ID.:36:&SESSION."> Evolutia facturilor </a>
+    <a href ="f?p=&APP_ID.:37:&SESSION."> Detalii medicamente </a>
+    <br>
+    <br>
+    <a href ="#"> </a>
+    <a href ="#"> </a>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+<script>
+function openNav(){
+    document.getElementById("mySidenav").style.width = "250px";
+    }
+function closeNav(){
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+<html>

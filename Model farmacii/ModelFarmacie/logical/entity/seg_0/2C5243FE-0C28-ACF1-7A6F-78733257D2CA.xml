@@ -1,0 +1,156 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2C5243FE-0C28-ACF1-7A6F-78733257D2CA" name="FACTURA">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-20 22:10:59 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDFactura" id="4805EEFA-1D15-2426-9F8D-A3CA4079E33A">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-20 22:11:20 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<structuredType>F72C39E0-D1CA-8821-2AD7-A1E95A37D3D1</structuredType>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataFacturare" id="01164417-94A7-A0A2-4E39-8A7AD6EE4A98">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-20 22:11:28 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NumarInregistrareFactura" id="8041BBE7-757B-C03B-789F-E708EDBB6190">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-20 22:11:48 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDAngajat1" id="01433BE8-AD53-45FB-59DA-90DDFB3868A2">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-21 13:37:41 UTC</createdTime>
+<generatorID>A83C4F90-0F0D-FC60-2202-0540FD1B3254</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>571E5667-69E8-4959-188B-9D9A7386C648</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataScadenta" id="54E2809C-3A0C-CB69-363F-C3752F730ACA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:54:09 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Tip" id="FFFC3A19-318A-DD6C-D9AF-1E4B9E838B01">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:54:17 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdDelegat" id="DF2924F9-AFA2-9159-19DF-D019B1C0D714">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 08:57:15 UTC</createdTime>
+<generatorID>588611C2-D5B5-E8D6-E353-1E369F3EAB00</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>028A56B2-4C5A-10E1-F200-4327ED886DBC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdPreparareMedicament" id="7319F5C2-3F65-7FDE-A739-BEACEE1B9E77">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:27:00 UTC</createdTime>
+<generatorID>A83C4F90-0F0D-FC60-2202-0540FD1B3254</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>43F8105A-A6EA-7029-FE06-720277BCCDD7</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IdAngajat" id="CCA1EDD0-2D3D-EB1C-99B0-FC9A030928A3">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:27:38 UTC</createdTime>
+<generatorID>A83C4F90-0F0D-FC60-2202-0540FD1B3254</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>1CB40DEC-8633-0CF7-C9AB-771F574A487B</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D4BC09F1-175D-E6EA-EEC8-2E6B3D29E3D3" name="FACTURI PK">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-20 22:12:15 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4805EEFA-1D15-2426-9F8D-A3CA4079E33A</attributeRef>
+<attributeRef>DF2924F9-AFA2-9159-19DF-D019B1C0D714</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

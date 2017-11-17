@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EFF4D623-3AE9-410D-32D7-CF4955636211" name="PartenerFurnizor">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:08:51 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdPartener" id="D240F9C0-22E0-32CE-7828-4A5077C1DDA1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:12:22 UTC</createdTime>
+<generatorID>F4120056-EAE5-E3A3-AE28-CCD014568A79</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>426AC40A-8864-4F65-3407-C3A6F77AAF8E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDfurnizor" id="ADE10E0D-7CC8-63E6-1920-9A02683D6058">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:12:43 UTC</createdTime>
+<generatorID>E0BB0ABA-3DAF-851B-C558-8B0565934538</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>1E46D657-5BD5-EE5E-4BC2-1C2E35FCE0E0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="621ED81B-1BD9-B295-CB34-3ACD269B9941" name="PartenerFurnizor PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 15:12:22 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D240F9C0-22E0-32CE-7828-4A5077C1DDA1</attributeRef>
+<attributeRef>ADE10E0D-7CC8-63E6-1920-9A02683D6058</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

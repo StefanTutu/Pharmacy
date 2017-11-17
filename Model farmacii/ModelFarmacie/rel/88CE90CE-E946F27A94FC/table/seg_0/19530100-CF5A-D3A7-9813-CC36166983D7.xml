@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="19530100-CF5A-D3A7-9813-CC36166983D7" name="PROGRAMANGAJAT">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>DC833344-2BA7-1675-CFD0-D16B842876DD</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDAngajat" id="B2DFB444-4025-F6BB-DB64-4DB22262361B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>3BC19006-CB79-B2BC-6102-632BCD221EA4</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDProgram" id="FCB4F59D-1741-A4FE-0023-79FAF4A5B1B1">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>1EA29761-2FAA-7281-17AE-D8B9C72A9EE9</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Data" id="7BAD269E-3DBF-7CEF-A0D5-3C599142C0E9">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>9A729C06-38F7-9F05-2469-D291A33094A2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORARMUNCA_IDProgram" id="7617A8AB-C8B8-E790-7593-7F1C53CB6219">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>3CB69E69-E3E9-68E4-BFD9-FEA3499D840B</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4760D1E7-4C6B-67A3-5EAE-B58F059156DD" referredColumn="B0113AFB-DB90-A6C4-A94D-09869A88C40B"/>
+</associations>
+</Column>
+<Column name="ANGAJAT_IDAngajat" id="CC4C4051-3698-FAC3-6515-D930C1856E81">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>BDA2734E-8B0C-C464-BA7D-520F919CBA51</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CFAB6085-ABCF-87C7-456F-D7C130294A7F" referredColumn="019C0CBD-AA66-715E-ACE4-1807E216CC4D"/>
+</associations>
+</Column>
+<Column name="ANGAJAT_ResponsabilPreparare_IdPreparareMedicament" id="0CFCEADB-EF4E-4B60-D3EE-4F5D89CEC0B7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>5D59F14A-5D51-DA5C-C068-3A61976C105C</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CFAB6085-ABCF-87C7-456F-D7C130294A7F" referredColumn="14FC58B7-E5DA-5874-E4F8-A1BBC4C60514"/>
+</associations>
+</Column>
+<Column name="ANGAJAT_ResponsabilPreparare_IdAngajat" id="89B9FAE9-9971-AA1F-04B0-771E653A905E">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-28 13:48:57 UTC</createdTime>
+<generatorID>294DB206-ED39-2C83-DBA9-9667D11E2FA2</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CFAB6085-ABCF-87C7-456F-D7C130294A7F" referredColumn="48BF048E-4FD2-9F45-0361-24A710448E47"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="69A09DFB-8C6C-0242-3C6F-57BC9BDDF980" name="PROGRAMANGAJAT_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>4B4BC591-E1F3-7CB8-1BB0-8D8C3620DAFF</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B2DFB444-4025-F6BB-DB64-4DB22262361B"/>
+<colUsage columnID="FCB4F59D-1741-A4FE-0023-79FAF4A5B1B1"/>
+<colUsage columnID="7617A8AB-C8B8-E790-7593-7F1C53CB6219"/>
+<colUsage columnID="CC4C4051-3698-FAC3-6515-D930C1856E81"/>
+<colUsage columnID="0CFCEADB-EF4E-4B60-D3EE-4F5D89CEC0B7"/>
+<colUsage columnID="89B9FAE9-9971-AA1F-04B0-771E653A905E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4811B52A-31EE-6130-42C8-A34804D1F4AF" name="PROGRAMANGAJAT_ANGAJAT_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>706E03C0-A80B-B890-9A33-5327754FDDAE</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CC4C4051-3698-FAC3-6515-D930C1856E81"/>
+<colUsage columnID="0CFCEADB-EF4E-4B60-D3EE-4F5D89CEC0B7"/>
+<colUsage columnID="89B9FAE9-9971-AA1F-04B0-771E653A905E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7368A079-8B74-30B6-5B2E-3DBA826186AF" name="PROGRAMANGAJAT_ORARMUNCA_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>E760CD6E-17A9-6D7A-EC68-FD761F4BD801</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7617A8AB-C8B8-E790-7593-7F1C53CB6219"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

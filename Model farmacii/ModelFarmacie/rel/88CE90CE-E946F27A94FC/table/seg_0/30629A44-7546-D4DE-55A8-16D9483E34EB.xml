@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="30629A44-7546-D4DE-55A8-16D9483E34EB" name="LINIERETETA">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:55 UTC</createdTime>
+<generatorID>5D5E3061-A8E2-EDC7-B31D-754F9E62069F</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NumarLinie" id="6DF73B88-0A49-5BA1-8BED-B8BA1853836A">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>CD04EE26-E1E1-893F-84F5-FFBEC40BF2A0</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>50</dataTypePrecision>
+<ownDataTypeParameters>,50,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RETETA_IDreteta" id="1069AEEB-763D-B366-43C0-C6A8B6D4BB45">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>AABE8317-929E-FDC9-9D6B-B108B935A2C1</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87F10849-4C8D-A20A-3192-53393AE5273A" referredColumn="FA775547-A194-CB1B-9811-FF71A71FACAA"/>
+</associations>
+</Column>
+<Column name="RETETA_MEDIC_IDMedic" id="DD951942-C2DC-9D10-51B1-7D085E07047B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>CEE4E22D-C2A0-A77A-FC57-0098652E0546</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87F10849-4C8D-A20A-3192-53393AE5273A" referredColumn="2F8B2919-D7EB-CE0C-1ABB-31A1C005736E"/>
+</associations>
+</Column>
+<Column name="RETETA_MEDIC_IDCabinet" id="67307438-C590-4633-382D-0432184C2097">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>2A20BE6C-DBB2-6D4E-15C8-42A3D46104A9</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87F10849-4C8D-A20A-3192-53393AE5273A" referredColumn="C776F68F-A65F-CBE0-9744-37BCFC6C1EEC"/>
+</associations>
+</Column>
+<Column name="Cantitate" id="ECAD0682-EFDB-237F-2DE1-DCBC8B6CB40B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D0B2768F-520A-0D00-F3FE-E93BF64C8CFB</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>500</dataTypePrecision>
+<ownDataTypeParameters>,500,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PretPeUnitate" id="88D7F549-E7AC-D83C-E162-D622F04FEDED">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>6F0357ED-D909-8C98-D072-732092CEB6F7</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>100</dataTypePrecision>
+<ownDataTypeParameters>,100,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="06116266-1554-FB10-95F7-C67A4F49BC88" name="LINIERETETA_PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>D1DBC057-F75E-9BF1-53B4-3AD91EB9FBD9</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6DF73B88-0A49-5BA1-8BED-B8BA1853836A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2C1068F0-BDC1-7D71-88FA-4B3A8DD8CC5F" name="LINIERETETA_RETETA_FK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-23 09:57:56 UTC</createdTime>
+<generatorID>EE780396-C270-F6DE-8E5A-53A9CD553B3D</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1069AEEB-763D-B366-43C0-C6A8B6D4BB45"/>
+<colUsage columnID="DD951942-C2DC-9D10-51B1-7D085E07047B"/>
+<colUsage columnID="67307438-C590-4633-382D-0432184C2097"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

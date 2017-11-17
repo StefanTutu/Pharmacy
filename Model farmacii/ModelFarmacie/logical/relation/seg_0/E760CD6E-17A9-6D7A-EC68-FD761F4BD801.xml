@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ORARMUNCA_PROGRAMANGAJAT" directorySegmentName="seg_0" id="E760CD6E-17A9-6D7A-EC68-FD761F4BD801">
+<createdBy>Administrator</createdBy>
+<createdTime>2016-11-20 23:01:00 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<sourcePk>E3F15846-3464-B080-A01A-AE6B710EA317</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>08C59E23-F963-DCD8-5A57-95C5F1980ACA</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>DC833344-2BA7-1675-CFD0-D16B842876DD</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

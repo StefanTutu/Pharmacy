@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A7CA1E29-5EDD-4A4E-9F45-18A352859ED7" name="Prescriptie">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:05:44 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IdPrescriptie" id="F8845AE3-6DF2-0C93-1AEE-418F1E6B8D61">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:05:54 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataEliberari" id="8D31518D-4968-7417-46F1-F6F6685B61F3">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:06:15 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DataCompletari" id="2B949D91-AAD4-79E5-13F7-C64D9D14B6B7">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:07:03 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CauntiatePrescrisa" id="F57EAF1F-2654-85E8-D8BF-7E1DD2785B4E">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:07:16 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>100</dataTypePrecision>
+<ownDataTypeParameters>,100,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ValidareAsigurare" id="BD239642-F83B-E171-62FD-4F2D4C42B78B">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:08:19 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MedicamenteAlternative" id="5DA1D1DB-1F60-1B6C-D22F-B22B62ED08F4">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:09:05 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDreteta" id="7CB46C18-AF4D-11C6-0804-69126CF351EC">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:12:21 UTC</createdTime>
+<generatorID>37717A55-48DA-D931-1B88-868F6908EA90</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>9E3CCCAB-706E-98BA-50A1-E913BF1331EE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="IDMedic" id="CAEC58B8-A673-A12E-06A5-CF366311B1DE">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:12:21 UTC</createdTime>
+<generatorID>37717A55-48DA-D931-1B88-868F6908EA90</generatorID>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<referedAttribute>7DC1B2A5-650F-936E-18A4-2940954080C3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="210C8C82-BA6B-DB9E-D822-ABF526483238" name="Prescriptie PK">
+<createdBy>Stef</createdBy>
+<createdTime>2016-11-22 22:06:13 UTC</createdTime>
+<ownerDesignName>ModelFarmacie</ownerDesignName>
+<engineerTo>
+<item key="88CE90CE-8D18-1308-17C1-E946F27A94FC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F8845AE3-6DF2-0C93-1AEE-418F1E6B8D61</attributeRef>
+<attributeRef>7CB46C18-AF4D-11C6-0804-69126CF351EC</attributeRef>
+<attributeRef>CAEC58B8-A673-A12E-06A5-CF366311B1DE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
